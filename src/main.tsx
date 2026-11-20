@@ -1,0 +1,10 @@
+import { render } from 'preact';
+import '@fontsource/atkinson-hyperlegible/400.css';
+import '@fontsource/atkinson-hyperlegible/700.css';
+import '@fontsource-variable/fraunces/soft.css';
+import './ui/styles/tokens.css';
+import './ui/styles/base.css';
+import './ui/styles/components.css';
+import { App } from './ui/App';
+
+render(<App />, document.getElementById('app')!);

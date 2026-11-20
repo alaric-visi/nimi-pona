@@ -1,0 +1,32 @@
+# Phrasebook — unlocks along the path. `unit` is the unit after which every word is known
+# (checked by tests/path.test.ts).
+
+- { tok: "toki!", en: "Hello!", unit: 1 }
+- { tok: "mi pona.", en: "I'm good.", unit: 1 }
+- { tok: "pona!", en: "Thanks! / Great!", unit: 1 }
+- { tok: "moku pona!", en: "Enjoy your meal!", unit: 1 }
+- { tok: "mi jan Lisa.", en: "I'm Lisa. (introducing yourself)", unit: 1 }
+- { tok: "toki pona li pona!", en: "Toki Pona is good!", unit: 2 }
+- { tok: "mi wile e ni.", en: "I'd like this.", unit: 3 }
+- { tok: "lape pona!", en: "Good night!", unit: 5 }
+- { tok: "mi sona ala.", en: "I don't know.", unit: 8 }
+- { tok: "sina pona anu seme?", en: "How are you?", unit: 6 }
+- { tok: "nimi sina li seme?", en: "What's your name?", unit: 6 }
+- { tok: "ni li seme?", en: "What is this?", unit: 6 }
+- { tok: "pona tawa sina.", en: "Thank you. (good to you)", unit: 7 }
+- { tok: "tawa pona!", en: "Goodbye! (to someone leaving)", unit: 7 }
+- { tok: "tomo telo li lon seme?", en: "Where is the bathroom?", unit: 7 }
+- { tok: "mi tan ma ante.", en: "I'm from another country.", unit: 7 }
+- { tok: "kama pona!", en: "Welcome!", unit: 8 }
+- { tok: "awen pona!", en: "Goodbye! (to someone staying)", unit: 8 }
+- { tok: "mi pakala.", en: "Sorry — my mistake.", unit: 8 }
+- { tok: "mi sona lili e toki pona.", en: "I know a little Toki Pona.", unit: 8 }
+- { tok: "sina sona ala sona e toki pona?", en: "Do you know Toki Pona?", unit: 8 }
+- { tok: "mi kama sona e toki pona.", en: "I'm learning Toki Pona.", unit: 8 }
+- { tok: "o toki sin.", en: "Say it again, please.", unit: 9 }
+- { tok: "mi olin e sina.", en: "I love you.", unit: 9 }
+- { tok: "sina jan pi toki pona anu seme?", en: "Do you speak Toki Pona?", unit: 10 }
+- { tok: "tenpo ni la mi wile lape.", en: "I'm sleepy now.", unit: 11 }
+- { tok: "ken la!", en: "Maybe!", unit: 11 }
+- { tok: "sina pilin seme?", en: "How do you feel?", unit: 14 }
+- { tok: "pilin mi la ni li pona.", en: "I think this is good.", unit: 14 }

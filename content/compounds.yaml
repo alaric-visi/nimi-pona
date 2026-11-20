@@ -1,0 +1,54 @@
+# Common compound phrases, shown in the dictionary under each word they contain.
+# Toki Pona builds vocabulary by description; these are conventional, not the only answers.
+
+- { tok: "jan pona", en: "friend" }
+- { tok: "jan lili", en: "child" }
+- { tok: "jan sona", en: "expert, scholar" }
+- { tok: "jan pali", en: "worker" }
+- { tok: "jan lawa", en: "leader" }
+- { tok: "jan utala", en: "soldier, fighter" }
+- { tok: "jan ike", en: "enemy, bad person" }
+- { tok: "jan esun", en: "merchant, shopkeeper" }
+- { tok: "jan pi toki pona", en: "Toki Pona speaker" }
+- { tok: "mama meli", en: "mother" }
+- { tok: "mama mije", en: "father" }
+- { tok: "tomo telo", en: "bathroom, toilet" }
+- { tok: "tomo tawa", en: "car" }
+- { tok: "tomo moku", en: "kitchen, restaurant" }
+- { tok: "tomo sona", en: "school" }
+- { tok: "tomo lape", en: "bedroom" }
+- { tok: "ilo tawa", en: "vehicle" }
+- { tok: "ilo sona", en: "computer" }
+- { tok: "ilo moku", en: "cutlery, utensil" }
+- { tok: "ilo toki", en: "phone" }
+- { tok: "telo nasa", en: "alcohol" }
+- { tok: "telo suli", en: "sea, ocean" }
+- { tok: "telo lete", en: "cold water" }
+- { tok: "telo suwi", en: "juice, sweet drink" }
+- { tok: "kalama musi", en: "music" }
+- { tok: "ma tomo", en: "city, town" }
+- { tok: "ma kasi", en: "forest" }
+- { tok: "tenpo suno", en: "day" }
+- { tok: "tenpo pimeja", en: "night" }
+- { tok: "tenpo ni", en: "now" }
+- { tok: "tenpo pini", en: "the past" }
+- { tok: "tenpo kama", en: "the future" }
+- { tok: "sike suno", en: "year" }
+- { tok: "supa lape", en: "bed" }
+- { tok: "lipu sona", en: "textbook" }
+- { tok: "moku suwi", en: "sweets, dessert" }
+- { tok: "moku lili", en: "snack" }
+- { tok: "pilin pona", en: "happy" }
+- { tok: "pilin ike", en: "sad, upset" }
+- { tok: "pona lukin", en: "beautiful" }
+- { tok: "ike lukin", en: "ugly" }
+- { tok: "len noka", en: "sock, shoe" }
+- { tok: "len lawa", en: "hat" }
+- { tok: "linja lawa", en: "hair (on the head)" }
+- { tok: "nena kute", en: "ear" }
+- { tok: "kama sona", en: "to learn" }
+- { tok: "pana sona", en: "to teach" }
+- { tok: "toki pona", en: "Toki Pona; good talk" }
+- { tok: "sitelen pona", en: "the Toki Pona script" }
+- { tok: "laso kasi", en: "green" }
+- { tok: "laso sewi", en: "sky blue" }

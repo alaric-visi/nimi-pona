@@ -1,0 +1,339 @@
+# Example-sentence corpus — human-authored, machine-linted (tests/content.test.ts).
+#
+#   tok   the Toki Pona sentence (names Capitalised, as in jan Sonja)
+#   en    the main English translation
+#   alt   other acceptable translations (Toki Pona is context-dependent)
+#
+# Words used, grammar concepts and difficulty are derived automatically by src/lang/.
+# Every word in words.yaml must appear in at least two sentences.
+
+# ── greetings & everyday phrases ────────────────────────────────────────────
+- { tok: "toki!", en: "Hello!", alt: ["Hi!"] }
+- { tok: "mi pona.", en: "I'm good.", alt: ["I'm fine.", "I am well."] }
+- { tok: "sina pona.", en: "You're good.", alt: ["You're nice."] }
+- { tok: "sina pona anu seme?", en: "How are you?", alt: ["Are you good?"] }
+- { tok: "mi pona ala.", en: "I'm not good." }
+- { tok: "kama pona!", en: "Welcome!" }
+- { tok: "tawa pona!", en: "Goodbye! (to someone leaving)", alt: ["Safe travels!"] }
+- { tok: "awen pona!", en: "Goodbye! (to someone staying)", alt: ["Take care!"] }
+- { tok: "lape pona!", en: "Good night!", alt: ["Sleep well!"] }
+- { tok: "moku pona!", en: "Enjoy your meal!" }
+- { tok: "pona tawa sina.", en: "Thank you.", alt: ["Good to you."] }
+- { tok: "mi pakala.", en: "Sorry, my mistake.", alt: ["Oops, I messed up."] }
+- { tok: "mi jan Sonja.", en: "I'm Sonja." }
+- { tok: "nimi sina li seme?", en: "What's your name?" }
+- { tok: "jan Lisa o, toki!", en: "Hello, Lisa!" }
+- { tok: "toki pona li toki pona.", en: "Toki Pona is a good language." }
+- { tok: "mi sona ala.", en: "I don't know." }
+- { tok: "sina sona ala sona e toki pona?", en: "Do you know Toki Pona?" }
+- { tok: "mi sona lili e toki pona.", en: "I know a little Toki Pona." }
+- { tok: "mi kama sona e toki pona.", en: "I'm learning Toki Pona." }
+
+# ── people ──────────────────────────────────────────────────────────────────
+- { tok: "jan li moku.", en: "The person is eating.", alt: ["Someone is eating.", "People eat."] }
+- { tok: "jan lili li musi.", en: "The child is playing.", alt: ["The kid is having fun."] }
+- { tok: "mama mi li pona tawa mi.", en: "I like my parent." }
+- { tok: "mama mije mi li lape.", en: "My father is sleeping." }
+- { tok: "mama meli sina li pali mute.", en: "Your mother works a lot." }
+- { tok: "meli li toki tawa mije.", en: "The woman is talking to the man." }
+- { tok: "mije li jo e soweli lili.", en: "The man has a small animal.", alt: ["The man has a pet."] }
+- { tok: "ona li jan pona mi.", en: "They are my friend.", alt: ["She is my friend.", "He is my friend."] }
+- { tok: "jan pona mi li kama.", en: "My friend is coming." }
+- { tok: "kulupu mi li suli.", en: "My community is big." }
+- { tok: "kulupu ni li musi e jan lili.", en: "This group entertains children." }
+- { tok: "mi en sina li jan pona.", en: "You and I are friends." }
+- { tok: "mi mute li toki.", en: "We are talking." }
+- { tok: "sina mute o kama!", en: "Come, all of you!" }
+- { tok: "jan tonsi li toki e nimi ona.", en: "The non-binary person says their name." }
+- { tok: "ona li tonsi.", en: "They are non-binary." }
+- { tok: "jan ale li ken kama.", en: "Everyone can come." }
+- { tok: "jan ante li lon tomo.", en: "Someone else is in the house." }
+
+# ── body ────────────────────────────────────────────────────────────────────
+- { tok: "lawa mi li pilin ike.", en: "My head hurts.", alt: ["My head feels bad."] }
+- { tok: "luka mi li seli.", en: "My hands are warm." }
+- { tok: "noka ona li pakala.", en: "Their leg is hurt." }
+- { tok: "oko mi li lukin e suno.", en: "My eyes see the sun." }
+- { tok: "oko sina li laso.", en: "Your eyes are blue.", alt: ["Your eyes are green."] }
+- { tok: "uta ona li loje.", en: "Their lips are red." }
+- { tok: "mi open e uta mi.", en: "I open my mouth." }
+- { tok: "sijelo mi li wawa.", en: "My body is strong." }
+- { tok: "sijelo mi li pilin pona.", en: "My body feels good." }
+- { tok: "selo kili li jelo.", en: "The fruit's peel is yellow." }
+- { tok: "selo mi li seli tan suno.", en: "My skin is hot from the sun." }
+- { tok: "sinpin ona li pona.", en: "Their face is nice." }
+- { tok: "nena sina li suli.", en: "Your nose is big." }
+- { tok: "insa mi li wile e moku.", en: "My stomach wants food." }
+- { tok: "monsi mi li pilin ike.", en: "My back hurts." }
+- { tok: "kute mi li pakala.", en: "My ears are damaged." }
+- { tok: "mi kute e kalama musi.", en: "I'm listening to music." }
+
+# ── animals ─────────────────────────────────────────────────────────────────
+- { tok: "soweli li suwi.", en: "The animal is cute." }
+- { tok: "soweli suwi li lape lon supa.", en: "The cute animal is sleeping on the bed.", alt: ["The cute animal sleeps on the table."] }
+- { tok: "waso li tawa lon sewi.", en: "The bird is flying in the sky.", alt: ["The bird moves in the sky."] }
+- { tok: "waso li kalama.", en: "The bird is singing.", alt: ["The bird makes a sound."] }
+- { tok: "kala li tawa lon telo.", en: "The fish swims in the water." }
+- { tok: "mi moku e kala.", en: "I eat fish." }
+- { tok: "akesi li lape lon kiwen seli.", en: "The lizard sleeps on the hot rock." }
+- { tok: "akesi li jaki tawa mi.", en: "I find reptiles gross." }
+- { tok: "pipi lili li lon kasi.", en: "A little bug is on the plant." }
+- { tok: "pipi mute li lon ma.", en: "There are lots of bugs on the ground." }
+- { tok: "soweli li mu.", en: "The animal makes a noise.", alt: ["The cow moos.", "The dog barks."] }
+- { tok: "mu!", en: "Moo!", alt: ["Woof!", "Meow!"] }
+- { tok: "kijetesantakalu li alasa e moku lon poki jaki.", en: "The raccoon is looking for food in the trash can." }
+- { tok: "kijetesantakalu li suwi mute.", en: "Raccoons are very cute." }
+- { tok: "mani mi li moku e kasi.", en: "My livestock eat plants." }
+
+# ── nature ──────────────────────────────────────────────────────────────────
+- { tok: "suno li suli.", en: "The sun is big." }
+- { tok: "suno li seli e ma.", en: "The sun warms the land." }
+- { tok: "mun li lon sewi.", en: "The moon is in the sky." }
+- { tok: "tenpo pimeja la mun li suno.", en: "At night, the moon shines." }
+- { tok: "telo li lete.", en: "The water is cold." }
+- { tok: "mi wile moku e telo.", en: "I want to drink water." }
+- { tok: "kasi li laso.", en: "The plant is green." }
+- { tok: "kasi suli li lon poka tomo.", en: "There's a tree next to the house." }
+- { tok: "kon li tawa.", en: "The wind is blowing.", alt: ["The air is moving."] }
+- { tok: "kon li lete.", en: "The air is cold." }
+- { tok: "nena suli li lon ma ni.", en: "There's a big mountain in this country." }
+- { tok: "ma li kiwen.", en: "The ground is hard." }
+- { tok: "ma tomo li suli.", en: "The city is big." }
+- { tok: "seli li wawa.", en: "The fire is strong." }
+- { tok: "sewi li laso.", en: "The sky is blue." }
+- { tok: "telo li kama tan sewi.", en: "It's raining.", alt: ["Water is coming from the sky."] }
+- { tok: "sike suno sin li kama.", en: "A new year is coming." }
+- { tok: "soko li kama lon ma.", en: "Mushrooms are coming up out of the ground." }
+- { tok: "mi moku ala e soko ni.", en: "I don't eat this mushroom." }
+
+# ── food ────────────────────────────────────────────────────────────────────
+- { tok: "mi moku e kili.", en: "I eat fruit.", alt: ["I'm eating vegetables."] }
+- { tok: "kili jelo li suwi.", en: "The yellow fruit is sweet." }
+- { tok: "kili loje li pona tawa mi.", en: "I like red fruit." }
+- { tok: "pan li moku pona.", en: "Bread is good food." }
+- { tok: "mi pali e pan.", en: "I'm making bread." }
+- { tok: "moku ni li seli.", en: "This food is hot." }
+- { tok: "telo suwi li pona tawa jan lili.", en: "Children like juice." }
+- { tok: "moku sina li jo e namako mute.", en: "Your food has a lot of spice." }
+- { tok: "mi pana e namako tawa moku.", en: "I'm adding spice to the food." }
+- { tok: "telo nasa li ike tawa sijelo.", en: "Alcohol is bad for the body." }
+
+# ── objects ─────────────────────────────────────────────────────────────────
+- { tok: "ilo ni li pakala.", en: "This machine is broken.", alt: ["This tool is broken."] }
+- { tok: "ilo sona mi li pona.", en: "My computer is good." }
+- { tok: "mi lukin e lipu.", en: "I'm reading a book.", alt: ["I'm looking at the paper."] }
+- { tok: "lipu ni li jo e sitelen mute.", en: "This book has many pictures." }
+- { tok: "poki li jo e telo.", en: "The cup has water in it." }
+- { tok: "o pana e poki tawa mi.", en: "Give me the box." }
+- { tok: "linja lawa ona li loje.", en: "Their hair is red." }
+- { tok: "linja li lon supa.", en: "The string is on the table." }
+- { tok: "palisa li lon ma.", en: "The stick is on the ground." }
+- { tok: "mi pakala e palisa.", en: "I broke the stick." }
+- { tok: "kiwen li suli.", en: "The rock is big." }
+- { tok: "ko li jaki.", en: "The mud is gross.", alt: ["The paste is gross."] }
+- { tok: "jan lili li musi kepeken ko.", en: "The child is playing with clay." }
+- { tok: "len mi li walo.", en: "My clothes are white." }
+- { tok: "len li awen e mi.", en: "Clothing protects me." }
+- { tok: "mi wile e len sin.", en: "I want new clothes." }
+- { tok: "lupa li open.", en: "The door is open." }
+- { tok: "o open e lupa.", en: "Open the door!" }
+- { tok: "o pini e lupa.", en: "Close the door!" }
+- { tok: "mani mi li lili.", en: "I have little money.", alt: ["My money is small."] }
+- { tok: "mi wile e mani mute.", en: "I want a lot of money." }
+- { tok: "sike li lon anpa supa.", en: "The ball is under the table." }
+- { tok: "jan lili li musi kepeken sike.", en: "The child is playing with a ball." }
+- { tok: "supa ni li suli.", en: "This table is big." }
+- { tok: "ijo ni li seme?", en: "What is this thing?" }
+- { tok: "ijo li lon poki.", en: "There's something in the box." }
+- { tok: "misikeke li pona e sijelo.", en: "Medicine heals the body." }
+- { tok: "mi moku e misikeke.", en: "I'm taking medicine." }
+- { tok: "leko li lon supa.", en: "The block is on the table." }
+- { tok: "mi tawa sewi kepeken leko.", en: "I go up the stairs." }
+- { tok: "ilo tawa mi li loje.", en: "My car is red." }
+
+# ── places ──────────────────────────────────────────────────────────────────
+- { tok: "mi lon tomo.", en: "I'm at home.", alt: ["I'm in the house."] }
+- { tok: "tomo mi li lili.", en: "My house is small." }
+- { tok: "mi tawa esun.", en: "I'm going to the market.", alt: ["I'm going to the shop."] }
+- { tok: "mi esun e kili lon esun.", en: "I buy fruit at the market." }
+- { tok: "ma ni li pona mute.", en: "This country is very good." }
+- { tok: "mi kama tan ma ante.", en: "I come from another country." }
+- { tok: "nasin ni li tawa tomo mi.", en: "This road goes to my house." }
+- { tok: "nasin ni li pona.", en: "This way is good.", alt: ["This method is good."] }
+- { tok: "mi sona ala e nasin.", en: "I don't know the way." }
+- { tok: "tomo telo li lon seme?", en: "Where is the bathroom?" }
+- { tok: "tomo pi jan pali li suli.", en: "The workers' building is big." }
+
+# ── colours ─────────────────────────────────────────────────────────────────
+- { tok: "kule ni li seme?", en: "What colour is this?" }
+- { tok: "sitelen ni li kule mute.", en: "This picture is very colourful." }
+- { tok: "kule loje li pona tawa mi.", en: "I like the colour red." }
+- { tok: "len ona li jelo.", en: "Their clothes are yellow." }
+- { tok: "telo suli li laso.", en: "The sea is blue." }
+- { tok: "pimeja li kama.", en: "Darkness is coming." }
+- { tok: "tomo li pimeja.", en: "The house is dark." }
+- { tok: "len pimeja li seli lon tenpo suno.", en: "Black clothes are hot during the day." }
+- { tok: "mun li walo.", en: "The moon is white." }
+- { tok: "soweli walo li lape.", en: "The white animal is sleeping." }
+
+# ── qualities ───────────────────────────────────────────────────────────────
+- { tok: "ni li pona!", en: "That's good!", alt: ["This is great!"] }
+- { tok: "ni li ike.", en: "That's bad." }
+- { tok: "tenpo ike li pini.", en: "The bad times are over." }
+- { tok: "ona li ante.", en: "They have changed.", alt: ["They are different."] }
+- { tok: "mi wile ante e nasin mi.", en: "I want to change my ways." }
+- { tok: "tomo li jaki.", en: "The house is dirty." }
+- { tok: "o weka e jaki.", en: "Take out the trash!", alt: ["Get rid of the dirt!"] }
+- { tok: "ona li nasa.", en: "They're strange.", alt: ["They're silly."] }
+- { tok: "jan nasa li toki nasa.", en: "The silly person says strange things." }
+- { tok: "ijo sin li kama.", en: "Something new is coming." }
+- { tok: "mi jo e ilo sin.", en: "I have a new device." }
+- { tok: "ona li sama mi.", en: "They are like me." }
+- { tok: "mi en ona li sama.", en: "They and I are the same." }
+- { tok: "soweli lili li suwi.", en: "The little animal is cute." }
+- { tok: "tomo suli li lon ma ni.", en: "There is a big building in this land." }
+- { tok: "ona li jan suli.", en: "They are an adult.", alt: ["They are important."] }
+- { tok: "telo li seli.", en: "The water is hot." }
+- { tok: "ona li wawa mute.", en: "They are very strong." }
+- { tok: "ilo li wawa ala.", en: "The machine isn't powerful." }
+- { tok: "ijo ni li epiku!", en: "This is epic!" }
+- { tok: "musi sina li epiku.", en: "Your game is awesome." }
+- { tok: "jan majuna li sona mute.", en: "The old person knows a lot." }
+- { tok: "tomo ni li majuna.", en: "This building is old." }
+- { tok: "pilin mi li meso.", en: "I feel so-so." }
+- { tok: "moku ni li meso.", en: "This food is average." }
+- { tok: "soweli li moli.", en: "The animal is dead." }
+- { tok: "kasi li moli tan ni: ona li jo ala e telo.", en: "The plant died because it had no water." }
+
+# ── actions ─────────────────────────────────────────────────────────────────
+- { tok: "mi pali.", en: "I'm working." }
+- { tok: "mi pali e tomo.", en: "I'm building a house." }
+- { tok: "o pana e telo tawa kasi.", en: "Water the plants!", alt: ["Give water to the plants!"] }
+- { tok: "mi pana e lipu tawa sina.", en: "I'm sending you a letter." }
+- { tok: "jan li alasa e soweli.", en: "The person is hunting the animal." }
+- { tok: "mi alasa sona e ni.", en: "I'm trying to understand this." }
+- { tok: "mi lanpan e lipu.", en: "I take the paper." }
+- { tok: "jan ike li lanpan e mani mi.", en: "A bad person stole my money." }
+- { tok: "o awen!", en: "Wait!", alt: ["Stay!"] }
+- { tok: "mi awen lon tomo.", en: "I'm staying at home." }
+- { tok: "mi awen moku.", en: "I'm still eating." }
+- { tok: "ona li kama tan esun.", en: "They're coming from the market." }
+- { tok: "mi kama jo e lipu.", en: "I got a book." }
+- { tok: "o kama!", en: "Come here!" }
+- { tok: "mi jo e soweli.", en: "I have a pet.", alt: ["I have an animal."] }
+- { tok: "mi lape lon supa lape.", en: "I sleep in the bed." }
+- { tok: "mi wile lape.", en: "I want to sleep.", alt: ["I'm sleepy."] }
+- { tok: "mi pakala e ilo.", en: "I broke the machine." }
+- { tok: "pakala!", en: "Damn!", alt: ["Oops!"] }
+- { tok: "o utala ala!", en: "Don't fight!" }
+- { tok: "jan tu li utala.", en: "Two people are fighting." }
+- { tok: "mi kipisi e pan.", en: "I'm slicing the bread." }
+- { tok: "jan li kipisi e palisa kepeken ilo.", en: "The person cuts the stick with a tool." }
+- { tok: "mi tawa tomo.", en: "I'm going home." }
+- { tok: "mi tawa.", en: "I'm leaving.", alt: ["I'm going."] }
+- { tok: "ona li tawa lon nasin.", en: "They're walking along the road." }
+- { tok: "o weka!", en: "Go away!" }
+- { tok: "mi weka e ijo jaki.", en: "I'm getting rid of the dirty things." }
+- { tok: "ona li weka.", en: "They're away.", alt: ["They're absent."] }
+- { tok: "unpa li ijo pi jan suli.", en: "Sex is a thing for adults." }
+- { tok: "jan tu li olin li unpa.", en: "The two people love each other and have sex." }
+
+# ── mind & feelings ─────────────────────────────────────────────────────────
+- { tok: "mi olin e sina.", en: "I love you." }
+- { tok: "mama li olin e jan lili ona.", en: "The parent loves their child." }
+- { tok: "mi pilin pona.", en: "I feel good." }
+- { tok: "sina pilin seme?", en: "How do you feel?" }
+- { tok: "pilin mi la sina pona.", en: "I think you're right.", alt: ["In my opinion, you're good."] }
+- { tok: "mi sona e ni.", en: "I know this." }
+- { tok: "sona li wawa.", en: "Knowledge is power." }
+- { tok: "mi sona toki kepeken toki pona.", en: "I know how to speak in Toki Pona." }
+- { tok: "mi wile e ni.", en: "I want this." }
+- { tok: "sina wile tawa seme?", en: "Where do you want to go?" }
+- { tok: "mi ken pali e ni.", en: "I can do this." }
+- { tok: "ken la ona li kama.", en: "Maybe they'll come." }
+- { tok: "monsuta li lon tomo!", en: "There's a monster in the house!" }
+- { tok: "mi monsuta e pimeja.", en: "I'm afraid of the dark." }
+- { tok: "jan li toki tawa sewi.", en: "The person is praying.", alt: ["The person speaks to the divine."] }
+
+# ── senses & communication ──────────────────────────────────────────────────
+- { tok: "mi lukin e sina.", en: "I see you." }
+- { tok: "o lukin e ni!", en: "Look at this!" }
+- { tok: "mi lukin sona e nimi ni.", en: "I'm trying to understand this word." }
+- { tok: "kalama li suli.", en: "The noise is loud." }
+- { tok: "mi kalama musi.", en: "I'm making music.", alt: ["I'm singing."] }
+- { tok: "o kute e mi!", en: "Listen to me!" }
+- { tok: "mi toki tawa sina.", en: "I'm talking to you." }
+- { tok: "ona li toki e ni: mi pona.", en: "They said: \"I'm good.\"" }
+- { tok: "nimi ni li ike tawa mi.", en: "I don't like this word." }
+- { tok: "mi sitelen e soweli.", en: "I'm drawing an animal." }
+- { tok: "sitelen pona li pona lukin.", en: "Sitelen pona looks nice." }
+- { tok: "mi lukin e lipu pu.", en: "I'm reading pu, the official book." }
+- { tok: "jan li pu.", en: "The person reads the official book." }
+- { tok: "mi pu ala.", en: "I haven't read pu." }
+- { tok: "lipu ku li jo e nimi mute.", en: "The ku dictionary has many words." }
+- { tok: "jan sona li ku.", en: "The expert is consulting ku." }
+- { tok: "linluwi li jo e sona mute.", en: "The internet has a lot of information." }
+- { tok: "mi lukin e lipu lon linluwi.", en: "I'm reading a page on the internet." }
+- { tok: "n... mi sona ala.", en: "Hmm… I don't know." }
+- { tok: "n, ni li pona.", en: "Hmm, that's good." }
+
+# ── position ────────────────────────────────────────────────────────────────
+- { tok: "soweli li lon anpa.", en: "The animal is down below." }
+- { tok: "mi anpa e lawa mi.", en: "I bow my head." }
+- { tok: "waso li lon sewi tomo.", en: "The bird is on top of the house." }
+- { tok: "sike li lon insa poki.", en: "The ball is inside the box." }
+- { tok: "jan li lon monsi mi.", en: "Someone is behind me." }
+- { tok: "ona li lon poka mi.", en: "They are next to me." }
+- { tok: "mi tawa esun poka jan pona mi.", en: "I'm going to the market with my friend." }
+- { tok: "lupa li lon sinpin tomo.", en: "The door is at the front of the house." }
+- { tok: "sinpin li walo.", en: "The wall is white." }
+- { tok: "noka supa li pakala.", en: "The table leg is broken." }
+- { tok: "mi lukin e sina lon jasima.", en: "I see you in the mirror." }
+- { tok: "telo li jasima e suno.", en: "The water reflects the sun." }
+
+# ── time ────────────────────────────────────────────────────────────────────
+- { tok: "tenpo ni la mi pali.", en: "Right now, I'm working." }
+- { tok: "tenpo pini la mi lili.", en: "In the past, I was small." }
+- { tok: "tenpo kama la mi tawa ma ante.", en: "In the future, I'll go to another country." }
+- { tok: "tenpo suno ni la mi moku e pan.", en: "Today I ate bread." }
+- { tok: "tenpo pimeja la mi lape.", en: "At night, I sleep." }
+- { tok: "tenpo ale la ona li pona.", en: "They are always good." }
+- { tok: "tenpo ala la mi moku e akesi.", en: "I never eat reptiles." }
+- { tok: "mi open e pali.", en: "I'm starting work." }
+- { tok: "mi open toki.", en: "I'm starting to talk." }
+- { tok: "pali mi li pini.", en: "My work is done." }
+- { tok: "mi pini moku.", en: "I finished eating." }
+- { tok: "musi li open.", en: "The game is starting." }
+
+# ── numbers ─────────────────────────────────────────────────────────────────
+- { tok: "mi jo e soweli wan.", en: "I have one animal." }
+- { tok: "jan tu li kama.", en: "Two people are coming." }
+- { tok: "mi jo e kili tu wan.", en: "I have three fruits." }
+- { tok: "jan luka luka li lon.", en: "Ten people are here." }
+- { tok: "mi jo e sike suno mute luka tu wan.", en: "I'm 28 years old." }
+- { tok: "jan nanpa wan li kama.", en: "The first person arrives." }
+- { tok: "nanpa sina li seme?", en: "What's your number?" }
+- { tok: "ale li pona.", en: "Everything is good.", alt: ["All is well."] }
+- { tok: "jan ale li sona e ni.", en: "Everyone knows this." }
+- { tok: "jan mute li lon esun.", en: "Many people are at the market." }
+- { tok: "ona li moku mute.", en: "They eat a lot." }
+- { tok: "kili wan taso li lon.", en: "There's only one fruit." }
+- { tok: "mi wile tawa. taso mi ken ala.", en: "I want to go. But I can't." }
+- { tok: "mi taso li lon tomo.", en: "Only I am at home." }
+
+# ── grammar words ───────────────────────────────────────────────────────────
+- { tok: "sina wile e kili anu pan?", en: "Do you want fruit or bread?" }
+- { tok: "ona li moku anu lape?", en: "Are they eating or sleeping?" }
+- { tok: "a, sina kama!", en: "Ah, you've come!" }
+- { tok: "ni li pona a!", en: "This is so good!" }
+- { tok: "sina pona kin.", en: "You're good too.", alt: ["You really are good."] }
+- { tok: "ona kin li kama.", en: "They're coming too." }
+- { tok: "tomo pi jan pona mi li suli.", en: "My friend's house is big." }
+- { tok: "jan pi toki pona li toki.", en: "The Toki Pona speaker is talking." }
+- { tok: "kili pi kule loje li suwi.", en: "The red fruit is sweet." }
+- { tok: "seme li lon poki?", en: "What's in the box?" }
+- { tok: "jan seme li kama?", en: "Who is coming?" }
+- { tok: "sina pali e seme?", en: "What are you doing?" }
+- { tok: "mi moku e kili e pan.", en: "I eat fruit and bread." }
+- { tok: "soweli li moku li lape.", en: "The animal eats and sleeps." }
+- { tok: "ni li seme?", en: "What is this?" }

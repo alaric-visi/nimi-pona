@@ -1,0 +1,511 @@
+# The learning path (nasin) — human-authored, machine-checked (tests/path.test.ts).
+#
+#   id, n       stable id and position on the path
+#   tp, title   unit name in toki pona and English
+#   focus       the one grammar idea of the unit
+#   glyph       word whose sitelen pona marks the unit on the map
+#   words       new words, in teaching order. Units 1–14 introduce all 120 pu words exactly once.
+#   lesson      one-screen mini-lesson: idea, points, examples
+#   checkpoint  a short reading (dialogue or story) + comprehension questions
+#               script: glyphs → the reading is shown in sitelen pona only
+#   optional    true → only on the path when the learner includes ku words
+#
+# Rule enforced by tests: every example, story line and phrase uses ONLY words from this
+# unit or earlier units (names excepted), and passes the grammar linter.
+
+- id: u1
+  n: 1
+  tp: toki!
+  title: First words
+  focus: mi and sina + what's true
+  glyph: toki
+  words: [mi, sina, pona, ike, toki, jan, moku, a]
+  lesson:
+    idea: A Toki Pona sentence can be just two words. After mi (I, we) or sina (you), simply say what is true — there's no verb "to be".
+    points:
+      - "mi pona = I'm good. sina ike = you're bad."
+      - "One word covers a whole idea: pona is good, simple, nice and fixed."
+      - "toki! means hello — literally \"talk!\""
+    examples:
+      - { tok: "mi pona.", en: "I'm good." }
+      - { tok: "mi moku.", en: "I'm eating." }
+      - { tok: "sina jan pona a!", en: "You're a good person!" }
+  checkpoint:
+    lines:
+      - { who: Lisa, tok: "toki!", en: "Hello!" }
+      - { who: Kalina, tok: "toki! mi jan Kalina.", en: "Hello! I'm Kalina." }
+      - { who: Lisa, tok: "mi jan Lisa. mi moku.", en: "I'm Lisa. I'm eating." }
+      - { who: Kalina, tok: "a, moku pona!", en: "Ah, enjoy your meal!" }
+      - { who: Lisa, tok: "mi pona. sina pona a!", en: "I'm good. You're lovely!" }
+    questions:
+      - { q: "Who is eating?", options: [Lisa, Kalina, Nobody], answer: 0 }
+      - { q: "What does \"toki!\" mean here?", options: ["Hello!", "Goodbye!", "Thank you!"], answer: 0 }
+      - { q: "How is Lisa?", options: [Good, Bad, Hungry], answer: 0 }
+
+- id: u2
+  n: 2
+  tp: ijo li…
+  title: Things are…
+  focus: li
+  glyph: li
+  words: [li, ona, ni, soweli, telo, suli, lili, suwi, kili]
+  lesson:
+    idea: When the subject is anything other than plain mi or sina, put li between the subject and what you say about it.
+    points:
+      - "soweli li suwi = the animal is cute."
+      - "ona (he, she, it, they) and ni (this, that) take li too: ona li lili."
+      - "Describing words and doing words work the same way: ona li moku = they eat."
+    examples:
+      - { tok: "soweli li suwi.", en: "The animal is cute." }
+      - { tok: "ona li moku.", en: "They are eating." }
+      - { tok: "ni li kili.", en: "This is a fruit." }
+  checkpoint:
+    lines:
+      - { who: Lisa, tok: "toki! ni li soweli mi.", en: "Hi! This is my animal." }
+      - { who: Kalina, tok: "a, soweli li lili li suwi!", en: "Oh, the animal is small and cute!" }
+      - { who: Lisa, tok: "ona li moku. kili li suwi.", en: "It's eating. The fruit is sweet." }
+      - { who: Kalina, tok: "soweli sina li pona.", en: "Your animal is good." }
+    questions:
+      - { q: "What is Lisa's animal like?", options: [Small and cute, Big and bad, Sweet-smelling], answer: 0 }
+      - { q: "What is the animal doing?", options: [Eating, Talking, Drinking water], answer: 0 }
+
+- id: u3
+  n: 3
+  tp: pali
+  title: Doing things
+  focus: e marks the object
+  glyph: pali
+  words: [e, lukin, jo, pali, pan, ilo, tomo, lipu, wile, ijo]
+  lesson:
+    idea: e marks the direct object — the thing being acted on. Without e, Toki Pona can't tell who does what to what.
+    points:
+      - "subject li verb e object: jan li pali e tomo."
+      - "With plain mi or sina there's still no li: mi jo e ilo."
+      - "Repeat e for several objects: mi moku e pan e kili."
+    examples:
+      - { tok: "mi lukin e lipu.", en: "I'm reading a book." }
+      - { tok: "jan li pali e tomo.", en: "The person is building a house." }
+      - { tok: "mi wile e ijo ni.", en: "I want this thing." }
+  checkpoint:
+    lines:
+      - { who: Lisa, tok: "mi pali e tomo.", en: "I'm building a house." }
+      - { who: Kalina, tok: "a! tomo li suli!", en: "Wow! The house is big!" }
+      - { who: Lisa, tok: "mi jo e ilo pona.", en: "I have a good tool." }
+      - { who: Kalina, tok: "mi wile moku. mi wile e pan.", en: "I want to eat. I want bread." }
+      - { who: Lisa, tok: "mi jo e pan e kili. ni li pona.", en: "I have bread and fruit. That's good." }
+    questions:
+      - { q: "What is Lisa building?", options: [A house, A tool, Bread], answer: 0 }
+      - { q: "What does Kalina want?", options: [Bread, A house, A book], answer: 0 }
+      - { q: "What does Lisa have?", options: [Bread and fruit, Only water, A book], answer: 0 }
+
+- id: u4
+  n: 4
+  tp: nimi sin
+  title: Building meaning
+  focus: head-first modifiers
+  glyph: kulupu
+  words: [musi, kalama, nasa, sin, ante, mute, waso, kala, len, mama]
+  lesson:
+    idea: Toki Pona builds new meanings by stacking words. The first word is the head — the kind of thing — and every word after it narrows it down.
+    points:
+      - "jan pona (good person) = friend. telo nasa (strange water) = alcohol."
+      - "kalama musi (fun sound) = music. tomo telo (water room) = bathroom."
+      - "mi and sina can modify too: tomo mi = my house, mama sina = your parent."
+    examples:
+      - { tok: "ona li jan pona mi.", en: "They are my friend." }
+      - { tok: "kalama musi li pona.", en: "Music is good." }
+      - { tok: "mama mi li jo e soweli sin.", en: "My parent has a new animal." }
+  checkpoint:
+    lines:
+      - { who: Kalina, tok: "mama mi li jo e waso sin.", en: "My parent has a new bird." }
+      - { who: Lisa, tok: "a! waso li kalama musi.", en: "Oh! The bird is singing." }
+      - { who: Kalina, tok: "waso li nasa. ona li moku e len!", en: "The bird is silly. It eats clothes!" }
+      - { who: Lisa, tok: "waso nasa a! mi jo e kala lili mute.", en: "What a silly bird! I have lots of little fish." }
+    questions:
+      - { q: "What does Kalina's parent have?", options: [A new bird, A fish, New clothes], answer: 0 }
+      - { q: "What does the bird eat?", options: [Clothes, Fish, Bread], answer: 0 }
+      - { q: "What does Lisa have?", options: [Lots of little fish, One big fish, A bird], answer: 0 }
+
+- id: u5
+  n: 5
+  tp: ala
+  title: No and maybe
+  focus: ala, anu, X ala X?
+  glyph: ala
+  words: [ala, anu, lape, wawa, jaki, lete, seli, kasi, pipi]
+  lesson:
+    idea: ala means no or not, and comes right after the word it negates. To ask a yes/no question, repeat the word with ala in between.
+    points:
+      - "mi lape ala = I'm not sleeping."
+      - "sina lape ala lape? = Are you sleeping? Answer lape (yes) or lape ala (no) — there is no word for yes."
+      - "anu means or: telo li seli anu lete?"
+    examples:
+      - { tok: "mi lape ala.", en: "I'm not sleeping." }
+      - { tok: "sina wile ala wile e kili?", en: "Do you want fruit?" }
+      - { tok: "telo li seli anu lete?", en: "Is the water hot or cold?" }
+  checkpoint:
+    lines:
+      - { who: Lisa, tok: "sina lape ala lape?", en: "Are you asleep?" }
+      - { who: Kalina, tok: "lape ala. mi wile moku.", en: "No. I want to eat." }
+      - { who: Lisa, tok: "sina wile e kili anu pan?", en: "Do you want fruit or bread?" }
+      - { who: Kalina, tok: "kili. pan li lete.", en: "Fruit. The bread is cold." }
+      - { who: Lisa, tok: "a! kili li jaki. pipi mute a!", en: "Oh! The fruit is dirty. So many bugs!" }
+    questions:
+      - { q: "Is Kalina asleep?", options: ["No — she wants to eat", "Yes, she's asleep", "She's working"], answer: 0 }
+      - { q: "Why doesn't Kalina want the bread?", options: [It's cold, It's dirty, It's sweet], answer: 0 }
+      - { q: "What's wrong with the fruit?", options: [It's dirty with bugs, It's cold, It's too hot], answer: 0 }
+
+- id: u6
+  n: 6
+  tp: seme?
+  title: Asking
+  focus: seme in the place of the answer
+  glyph: seme
+  words: [seme, nimi, ma, esun, mani, poki, kule, loje, jelo, laso, walo, pimeja]
+  lesson:
+    idea: To ask an open question, put seme exactly where the answer would go. The word order doesn't change.
+    points:
+      - "sina moku e seme? = you're eating what? → What are you eating?"
+      - "jan seme li toki? = Who is talking?"
+      - "Colours: loje, jelo, laso (blue and green), walo, pimeja. kule = colour."
+    examples:
+      - { tok: "nimi sina li seme?", en: "What's your name?" }
+      - { tok: "sina wile e seme?", en: "What do you want?" }
+      - { tok: "kule ni li seme?", en: "What colour is this?" }
+      - { tok: "ma sina li seme?", en: "What's your country?" }
+  checkpoint:
+    lines:
+      - { who: seller, tok: "toki! esun mi li jo e kili mute.", en: "Hello! My stall has lots of fruit." }
+      - { who: Lisa, tok: "mi wile e kili.", en: "I'd like some fruit." }
+      - { who: seller, tok: "sina wile e kili seme?", en: "Which fruit do you want?" }
+      - { who: Lisa, tok: "kili jelo.", en: "Yellow fruit." }
+      - { who: seller, tok: "kili jelo li suwi. sina jo ala jo e mani?", en: "Yellow fruit is sweet. Do you have money?" }
+      - { who: Lisa, tok: "mi jo e mani lili. mi jo ala e poki.", en: "I have a little money. I don't have a bag." }
+      - { who: seller, tok: "sina wile e poki laso anu poki walo anu poki loje?", en: "Do you want a blue bag, a white bag or a red bag?" }
+      - { who: Lisa, tok: "poki walo. poki pimeja li ike.", en: "The white bag. Black bags are no good." }
+      - { who: seller, tok: "pona. kili ni li sina.", en: "Fine. This fruit is yours." }
+    questions:
+      - { q: "What colour fruit does Lisa want?", options: [Yellow, Red, Green], answer: 0 }
+      - { q: "How much money does Lisa have?", options: [A little, A lot, None], answer: 0 }
+      - { q: "Which bag does Lisa choose?", options: [White, Blue, Black], answer: 0 }
+
+- id: u7
+  n: 7
+  tp: lon tawa tan
+  title: Where and how
+  focus: prepositions
+  glyph: lon
+  words: [lon, tawa, tan, sama, kepeken, poka, insa, anpa, sewi, monsi, sinpin, supa, nasin]
+  lesson:
+    idea: "Prepositions add where, why and how: lon (at, in), tawa (to, for), tan (from, because of), sama (like), kepeken (using). They work as verbs too: mi lon tomo — I'm at home."
+    points:
+      - "They come after the verb phrase: mi pali kepeken ilo."
+      - "Position words are nouns after lon: lon sewi (above), lon anpa (below), lon insa (inside), lon poka (beside)."
+      - "X li pona tawa mi = X is good to me → I like X."
+    examples:
+      - { tok: "soweli li lon anpa supa.", en: "The animal is under the table." }
+      - { tok: "mi tawa esun.", en: "I'm going to the market." }
+      - { tok: "kili li pona tawa mi.", en: "I like fruit." }
+  checkpoint:
+    lines:
+      - { tok: "jan Kalina li tawa esun.", en: "Kalina goes to the market." }
+      - { tok: "ona li tawa kepeken nasin suli.", en: "She goes along the big road." }
+      - { tok: "ona li lukin e soweli lili lon esun.", en: "She sees a little animal at the market." }
+      - { tok: "soweli li lon anpa supa.", en: "The animal is under a table." }
+      - { tok: "ona li sama soweli mi!", en: "It's just like my animal!" }
+    questions:
+      - { q: "Where does Kalina go?", options: [To the market, Home, To the sea], answer: 0 }
+      - { q: "Where is the little animal?", options: [Under a table, On a table, In a house], answer: 0 }
+      - { q: "What is the animal like?", options: [Like Kalina's own animal, Big and strong, Dirty], answer: 0 }
+
+- id: u8
+  n: 8
+  tp: wile, ken
+  title: Wanting and being able
+  focus: preverbs
+  glyph: wile
+  words: [ken, kama, awen, sona, open, pini, alasa, pakala, utala]
+  lesson:
+    idea: "Preverbs go right before a verb and change it: wile (want to), ken (can), kama (become, start to), awen (keep on), sona (know how to), open (start), pini (finish), alasa (try to)."
+    points:
+      - "mi ken toki = I can talk. Negate the preverb: mi ken ala toki."
+      - "kama sona (come to know) = learn."
+      - "pini marks finishing: mi pini moku = I've finished eating."
+    examples:
+      - { tok: "mi kama sona e toki pona.", en: "I'm learning Toki Pona." }
+      - { tok: "sina ken ala ken pali e ni?", en: "Can you do this?" }
+      - { tok: "mi pini pali.", en: "I've finished working." }
+  checkpoint:
+    lines:
+      - { tok: "jan Lisa li kama sona e toki pona.", en: "Lisa is learning Toki Pona." }
+      - { tok: "ona li awen lukin e lipu.", en: "She keeps reading the book." }
+      - { tok: "ona li alasa toki. toki ona li ike!", en: "She tries to speak. Her speaking is bad!" }
+      - { tok: "ona li pakala. ona li open sin.", en: "She makes a mistake. She starts again." }
+      - { tok: "ona li pini lukin e lipu. ona li sona!", en: "She finishes reading the book. She knows it!" }
+    questions:
+      - { q: "What is Lisa learning?", options: [Toki Pona, To cook, To build], answer: 0 }
+      - { q: "What does she do after a mistake?", options: [She starts again, She stops, She sleeps], answer: 0 }
+      - { q: "How does it end?", options: [She finishes the book and knows it, She gives up, She loses the book], answer: 0 }
+
+- id: u9
+  n: 9
+  tp: o!
+  title: Commands and calling
+  focus: o
+  glyph: o
+  words: [o, pana, kute, weka, lupa, olin, mu, uta]
+  lesson:
+    idea: "o turns a sentence into a command or a wish: o kama! (come!). After a name it calls someone: jan Lisa o! With a subject, o takes the place of li."
+    points:
+      - "o + verb = a command: o pana e telo!"
+      - "Name + o = calling someone: jan Kalina o kama! (Kalina, come!)"
+      - "A negative command uses ala: o utala ala! (don't fight!)"
+    examples:
+      - { tok: "o kute e mi!", en: "Listen to me!" }
+      - { tok: "jan Lisa o kama!", en: "Lisa, come here!" }
+      - { tok: "o utala ala!", en: "Don't fight!" }
+  checkpoint:
+    lines:
+      - { who: Kalina, tok: "jan Lisa o kama! soweli li mu!", en: "Lisa, come! The animal is making noise!" }
+      - { who: Lisa, tok: "a! soweli o kalama ala!", en: "Oh! Animal, be quiet!" }
+      - { who: Kalina, tok: "ona li wile moku. o pana e moku tawa ona.", en: "It wants to eat. Give it some food." }
+      - { who: Lisa, tok: "pona. soweli o moku!", en: "OK. Eat up, animal!" }
+      - { who: Kalina, tok: "mi olin e soweli ni.", en: "I love this animal." }
+    questions:
+      - { q: "Why does Kalina call Lisa?", options: [The animal is making noise, It's time to eat, She's hurt], answer: 0 }
+      - { q: "What does the animal want?", options: [To eat, To sleep, To go out], answer: 0 }
+      - { q: "How does Kalina feel about the animal?", options: [She loves it, She's scared of it, She wants it gone], answer: 0 }
+
+- id: u10
+  n: 10
+  tp: pi
+  title: Grouping
+  focus: pi and en
+  glyph: pi
+  words: [pi, en, kulupu, meli, mije, lawa, linja, palisa, sike, ko, kiwen]
+  lesson:
+    idea: "Modifiers normally pile onto everything before them. pi regroups: the words after pi describe the head together, as one idea. en joins subjects."
+    points:
+      - "jan toki pona = a good talking person. jan pi toki pona = a person of Toki Pona — a speaker."
+      - "pi always needs two or more words after it."
+      - "en only joins subjects — for objects, repeat e: mi lukin e meli e mije."
+    examples:
+      - { tok: "tomo pi jan pona mi li suli.", en: "My friend's house is big." }
+      - { tok: "mi en sina li kulupu.", en: "You and I are a team." }
+      - { tok: "jan pi toki pona li mute.", en: "There are many Toki Pona speakers." }
+  checkpoint:
+    lines:
+      - { tok: "kulupu pi toki pona li lon tomo sin.", en: "The Toki Pona group is in a new building." }
+      - { tok: "meli en mije li toki.", en: "Women and men are talking." }
+      - { tok: "jan Lisa en jan Kalina li kama.", en: "Lisa and Kalina arrive." }
+      - { tok: "jan lawa pi kulupu ni li toki: kama pona!", en: "The leader of the group says: welcome!" }
+      - { tok: "ona li jo e linja lawa loje.", en: "They have red hair." }
+    questions:
+      - { q: "Who is in the new building?", options: [The Toki Pona group, A family, Nobody], answer: 0 }
+      - { q: "What does the group's leader say?", options: ["Welcome!", "Goodbye!", "Be quiet!"], answer: 0 }
+      - { q: "What colour is the leader's hair?", options: [Red, Yellow, Black], answer: 0 }
+
+- id: u11
+  n: 11
+  tp: tenpo la
+  title: Time and context
+  focus: la and tenpo
+  glyph: tenpo
+  words: [la, tenpo, suno, mun, kon, nena, akesi, moli, taso]
+  lesson:
+    idea: "la puts context in front of a sentence: [context] la [sentence]. It's how Toki Pona says when, if, and in my opinion."
+    points:
+      - "tenpo ni la (now), tenpo pini la (in the past), tenpo kama la (in the future)."
+      - "sina wile la, mi kama = if you want, I'll come."
+      - "taso at the start of a sentence means but."
+    examples:
+      - { tok: "tenpo pini la mi lili.", en: "In the past, I was small." }
+      - { tok: "tenpo suno ni la mi pali.", en: "Today I'm working." }
+      - { tok: "sina wile la mi ken kama.", en: "If you want, I can come." }
+  checkpoint:
+    lines:
+      - { tok: "tenpo pini la jan Lisa li sona ala e toki pona.", en: "In the past, Lisa didn't know Toki Pona." }
+      - { tok: "tenpo ni la ona li toki mute kepeken toki pona.", en: "Now she talks a lot in Toki Pona." }
+      - { tok: "tenpo suno la ona li pali. tenpo pimeja la ona li lukin e mun.", en: "By day she works. At night she looks at the moon." }
+      - { tok: "ona li wile tawa nena suli. taso nena li weka.", en: "She wants to go to the big mountain. But the mountain is far away." }
+    questions:
+      - { q: "When did Lisa not know Toki Pona?", options: [In the past, Now, Never], answer: 0 }
+      - { q: "What does Lisa do at night?", options: [Looks at the moon, Works, Goes to the mountain], answer: 0 }
+      - { q: "Why hasn't she gone to the mountain?", options: [It's far away, It's cold, She's scared], answer: 0 }
+
+- id: u12
+  n: 12
+  tp: nanpa
+  title: Counting
+  focus: numbers
+  glyph: nanpa
+  words: [wan, tu, luka, nanpa, ale]
+  lesson:
+    idea: "Toki Pona counts simply: wan (1), tu (2), mute (many). The book pu adds luka (5), mute (20) and ale (100) — say them largest first and add them up."
+    points:
+      - "Numbers follow the noun: soweli tu = two animals."
+      - "tu wan = 3, luka tu = 7, mute luka tu wan = 28."
+      - "nanpa makes ordinals: jan nanpa wan = the first person."
+    examples:
+      - { tok: "mi jo e soweli tu.", en: "I have two animals." }
+      - { tok: "jan luka luka li lon tomo.", en: "Ten people are in the house." }
+      - { tok: "ona li jan nanpa wan.", en: "They are number one." }
+  checkpoint:
+    lines:
+      - { tok: "jan Lisa li jo e kili luka tu.", en: "Lisa has seven fruits." }
+      - { tok: "ona li pana e kili tu tawa jan Kalina.", en: "She gives two fruits to Kalina." }
+      - { tok: "jan Kalina li moku e kili wan.", en: "Kalina eats one fruit." }
+      - { tok: "tenpo ni la jan Lisa li jo e kili luka.", en: "Now Lisa has five fruits." }
+    questions:
+      - { q: "How many fruits did Lisa have at first?", options: [Seven, Five, Two], answer: 0 }
+      - { q: "How many did she give to Kalina?", options: [Two, One, Five], answer: 0 }
+      - { q: "How many does Lisa have now?", options: [Five, Seven, Three], answer: 0 }
+
+- id: u13
+  n: 13
+  tp: nimi jan
+  title: Names and writing
+  focus: unofficial words and cartouches
+  glyph: sitelen
+  words: [sitelen, pu, kin]
+  lesson:
+    idea: "Names from other languages become unofficial words: capitalised, reshaped to Toki Pona sounds, and introduced by a head noun — jan Lisa (person), ma Kanata (Canada), toki Inli (English)."
+    points:
+      - "The head noun says what kind of thing the name is: jan, ma, toki."
+      - "Names follow the sound rules: Canada → Kanata, America → Amelika."
+      - "In sitelen pona, a name goes in a cartouche; each glyph stands for its word's first letter."
+    examples:
+      - { tok: "mi tan ma Kanata.", en: "I'm from Canada." }
+      - { tok: "mi toki kepeken toki Inli.", en: "I speak English." }
+      - { tok: "jan Sonja li pali e toki pona.", en: "Sonja created Toki Pona." }
+  checkpoint:
+    lines:
+      - { tok: "jan Sonja li jan pi ma Kanata.", en: "Sonja is from Canada." }
+      - { tok: "ona li pali e toki pona.", en: "She created Toki Pona." }
+      - { tok: "ona li sitelen e lipu pu.", en: "She wrote the book pu." }
+      - { tok: "ona kin li pali e sitelen pona.", en: "She also created sitelen pona." }
+      - { tok: "sitelen pona li pona lukin.", en: "Sitelen pona is beautiful." }
+    questions:
+      - { q: "Where is Sonja from?", options: [Canada, America, England], answer: 0 }
+      - { q: "Which book did she write?", options: [pu, ku, An English dictionary], answer: 0 }
+      - { q: "What else did she create?", options: [sitelen pona, A game, A country], answer: 0 }
+
+- id: u14
+  n: 14
+  tp: pilin
+  title: Feelings and the body
+  focus: pilin and the body
+  glyph: pilin
+  words: [pilin, sijelo, noka, oko, selo, unpa, namako]
+  lesson:
+    idea: "pilin is both heart and feeling. Toki Pona describes feelings by what the heart is like — and pilin mi la… is how you say I think that…"
+    points:
+      - "mi pilin pona / mi pilin ike = I feel good / bad."
+      - "pilin mi la sina pona = I think you're right."
+      - "Body words: sijelo (body), lawa (head), oko (eye), uta (mouth), luka (hand), noka (leg, foot), selo (skin)."
+    examples:
+      - { tok: "mi pilin pona.", en: "I feel good." }
+      - { tok: "pilin mi la sina pona.", en: "I think you're right." }
+      - { tok: "noka mi li pakala.", en: "My leg is hurt." }
+  checkpoint:
+    lines:
+      - { tok: "jan Kalina li pilin ike.", en: "Kalina feels bad." }
+      - { tok: "noka ona li pakala. sijelo ona li seli.", en: "Her leg is hurt. Her body is hot." }
+      - { tok: "jan Lisa li kama. ona li pana e telo lete.", en: "Lisa comes. She brings cold water." }
+      - { tok: "jan Lisa o, sina pona a!", en: "Lisa, you're so kind!" }
+      - { tok: "tenpo ni la pilin ona li pona.", en: "Now she feels good." }
+    questions:
+      - { q: "How does Kalina feel at first?", options: [Bad, Good, Sleepy], answer: 0 }
+      - { q: "What's wrong with her?", options: [Her leg is hurt and she's hot, She's hungry, She's lost], answer: 0 }
+      - { q: "What does Lisa bring?", options: [Cold water, Food, Medicine], answer: 0 }
+
+- id: u15
+  n: 15
+  tp: lukin e sitelen
+  title: Reading sitelen pona
+  focus: reading glyphs
+  glyph: lukin
+  words: []
+  lesson:
+    idea: "Every Toki Pona word has one sitelen pona glyph. Read them left to right, like Latin letters. Names sit in a cartouche, spelled letter by letter."
+    points:
+      - "One glyph = one word, so a sentence is a row of pictures you already know."
+      - "Many glyphs show their meaning: suno is a sun, tomo a roof, oko an eye."
+      - "This checkpoint is written in sitelen pona only — tap a line to see it in Latin."
+    examples:
+      - { tok: "jan lili li lukin e waso.", en: "A child sees a bird." }
+      - { tok: "suno li lon sewi.", en: "The sun is in the sky." }
+      - { tok: "mi jan Lisa.", en: "I'm Lisa." }
+  checkpoint:
+    script: glyphs
+    lines:
+      - { tok: "jan lili li lukin e waso.", en: "A child sees a bird." }
+      - { tok: "waso li tawa lon sewi.", en: "The bird flies in the sky." }
+      - { tok: "jan lili li wile tawa sama waso.", en: "The child wants to fly like the bird." }
+      - { tok: "mama ona li toki: sina ken ala tawa lon sewi.", en: "Their parent says: you can't fly in the sky." }
+      - { tok: "taso sina ken kalama musi sama waso!", en: "But you can sing like a bird!" }
+    questions:
+      - { q: "What does the child see?", options: [A bird, A fish, The moon], answer: 0 }
+      - { q: "What does the child want?", options: [To fly like the bird, To eat, To sleep], answer: 0 }
+      - { q: "What does the parent suggest?", options: [Singing like a bird, Going home, Drawing a bird], answer: 0 }
+
+- id: u16
+  n: 16
+  tp: lipu lili
+  title: Stories
+  focus: reading a whole story
+  glyph: lipu
+  words: []
+  lesson:
+    idea: "You know every word in pu now. Real fluency comes from reading: short stories, slowly, out loud."
+    points:
+      - "Read each sentence twice: once for the words, once for the meaning."
+      - "When a word could mean several things, let the story choose."
+      - "Try reading the sitelen pona line first, then check the Latin."
+    examples:
+      - { tok: "tenpo pini la soweli lili li lon ma kasi.", en: "Once upon a time, a little animal lived in a forest." }
+      - { tok: "ona tu li pilin pona.", en: "The two of them were happy." }
+  checkpoint:
+    lines:
+      - { tok: "tenpo pini la soweli lili li lon ma kasi.", en: "Once upon a time, a little animal lived in a forest." }
+      - { tok: "soweli li jo ala e jan pona.", en: "The animal had no friends." }
+      - { tok: "tenpo suno wan la waso li kama.", en: "One day, a bird came." }
+      - { tok: "waso li toki: toki! sina pilin seme?", en: "The bird said: Hello! How do you feel?" }
+      - { tok: "soweli li toki: mi pilin ike. mi jo ala e jan pona.", en: "The animal said: I feel sad. I have no friends." }
+      - { tok: "waso li toki: mi ken jan pona sina!", en: "The bird said: I can be your friend!" }
+      - { tok: "tenpo ni la soweli en waso li musi lon ma kasi.", en: "Now the animal and the bird play in the forest." }
+      - { tok: "ona tu li pilin pona.", en: "The two of them are happy." }
+    questions:
+      - { q: "Where did the animal live?", options: [In a forest, In a house, By the sea], answer: 0 }
+      - { q: "Why did it feel sad?", options: [It had no friends, It was hungry, It was cold], answer: 0 }
+      - { q: "What does the bird offer?", options: [To be its friend, Some food, To fly away together], answer: 0 }
+
+- id: u17
+  n: 17
+  tp: nimi ku
+  title: Beyond pu
+  focus: community words
+  glyph: kijetesantakalu
+  optional: true
+  words: [kijetesantakalu, tonsi, monsuta, kipisi, lanpan, misikeke, soko, leko, epiku, majuna, meso, jasima, linluwi, ku, n]
+  lesson:
+    idea: "Toki Pona is alive. The dictionary ku (2021) recorded the words the community actually uses beyond the 120 of pu."
+    points:
+      - "Some fill gaps: tonsi (non-binary), misikeke (medicine), linluwi (network, internet)."
+      - "Some are just loved: kijetesantakalu (raccoon) started as a joke and stuck."
+      - "n is a thinking noise — hmm… — and the only word without a vowel."
+    examples:
+      - { tok: "kijetesantakalu li suwi mute.", en: "Raccoons are very cute." }
+      - { tok: "ijo ni li epiku!", en: "This is epic!" }
+      - { tok: "n... mi sona ala.", en: "Hmm… I don't know." }
+  checkpoint:
+    lines:
+      - { tok: "kijetesantakalu li lon poki jaki.", en: "A raccoon is in the trash can." }
+      - { tok: "ona li lanpan e moku.", en: "It grabs some food." }
+      - { tok: "jan li pilin monsuta. ona li toki: n... ni li seme?", en: "A person gets scared. They say: Hmm… what is that?" }
+      - { tok: "kijetesantakalu li lukin e jan. ona li tawa weka.", en: "The raccoon looks at the person. It runs away." }
+      - { tok: "jan li toki: soweli epiku a!", en: "The person says: what an epic animal!" }
+    questions:
+      - { q: "Where is the raccoon?", options: [In the trash can, In a tree, In the house], answer: 0 }
+      - { q: "What does it grab?", options: [Food, A stick, A book], answer: 0 }
+      - { q: "How does the person feel at first?", options: [Scared, Happy, Sleepy], answer: 0 }

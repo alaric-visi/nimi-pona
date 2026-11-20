@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOKI PONA — Nimi Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  color-scheme: light dark;
+  --app-bg: transparent;
+  --bg: #0a0a0a;
+  --fg: #e8e8e8;
+  --fg-dim: #888;
+  --fg-bright: #fff;
+  --border: #333;
+  --correct: #4ade80;
+  --wrong: #f87171;
+  --mono: 'Share Tech Mono', monospace;
+  --display: 'VT323', monospace;
+  --active-cat-bg: #1e1e1e;
+  --active-cat-hover: #555;
+}
+
+html:not(.dark) {
+  --app-bg: transparent;
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --fg-dim: #666;
+  --fg-bright: #000;
+  --border: #ccc;
+  --correct: #22c55e;
+  --wrong: #ef4444;
+  --active-cat-bg: #e5e5e5;
+  --active-cat-hover: #ccc;
+}
+
+html, body {
+  background: var(--app-bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.title {
+  font-family: var(--display);
+  font-size: 36px;
+  color: var(--fg-bright);
+  letter-spacing: 3px;
+  line-height: 1;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: var(--fg-dim);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  font-size: 11px;
+  color: var(--fg-dim);
+  text-align: right;
+}
+
+.stat-val {
+  display: block;
+  color: var(--fg-bright);
+  font-size: 18px;
+  font-family: var(--display);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.mode-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.mode-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--fg-dim);
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 4px 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.1s;
+}
+
+.mode-btn.active {
+  background: var(--fg-bright);
+  border-color: var(--fg-bright);
+  color: var(--bg);
+}
+
+.mode-btn:hover:not(.active) {
+  border-color: var(--fg);
+  color: var(--fg);
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.streak-row {
+  font-size: 11px;
+  color: var(--fg-dim);
+  letter-spacing: 1px;
+}
+
+.streak-val { color: var(--correct); }
+
+.category-row {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.cat-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--fg-dim);
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.1s;
+}
+
+.cat-btn.active {
+  background: var(--active-cat-bg);
+  border-color: var(--fg-dim);
+  color: var(--fg);
+}
+
+.cat-btn:hover:not(.active) { border-color: var(--active-cat-hover); color: var(--fg-dim); }
+
+.progress-bar-wrap {
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+}
+
+.progress-bar-fill {
+  height: 2px;
+  background: var(--fg-bright);
+  transition: width 0.3s;
+}
+
+.card-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+.card-counter {
+  font-size: 11px;
+  color: var(--fg-dim);
+  align-self: flex-end;
+  letter-spacing: 1px;
+}
+
+/* 3D flip card */
+.card-scene {
+  width: 100%;
+  flex: 1;
+  min-height: 120px;
+  perspective: 900px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-scene.no-flip { cursor: default; }
+
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flashcard.flipped { transform: rotateY(180deg); }
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 24px;
+  gap: 10px;
+  border: 1px solid var(--fg-dim);
+  background: var(--bg);
+  transition: border-color 0.15s;
+}
+
+.card-face.back {
+  transform: rotateY(180deg);
+  border-color: var(--fg-bright);
+}
+
+.card-scene:not(.no-flip):hover .card-face.front { border-color: var(--fg-bright); }
+
+/* quiz-mode card: no faces, plain display */
+.quiz-card {
+  width: 100%;
+  flex: 1;
+  min-height: 120px;
+  border: 1px solid var(--fg-dim);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 24px;
+  gap: 10px;
+  position: relative;
+  display: none;
+}
+
+.card-label {
+  font-size: 10px;
+  color: var(--fg-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 10px;
+  left: 12px;
+}
+
+.card-word {
+  font-family: var(--display);
+  font-size: 64px;
+  color: var(--fg-bright);
+  letter-spacing: 3px;
+  line-height: 1;
+  text-align: center;
+}
+
+.card-pos {
+  font-size: 10px;
+  color: var(--fg-dim);
+  letter-spacing: 1px;
+}
+
+.card-meaning {
+  font-size: 17px;
+  color: var(--fg);
+  text-align: center;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.card-example {
+  font-size: 11px;
+  color: var(--fg-dim);
+  text-align: center;
+  font-style: italic;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  width: 100%;
+}
+
+.tap-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 10px;
+  color: var(--fg-dim);
+  letter-spacing: 1px;
+}
+
+.action-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.action-btn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--fg-dim);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 10px 4px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.1s;
+  display: none;
+}
+
+.action-btn:hover { border-color: var(--fg); color: var(--fg); }
+.action-btn.correct-btn:hover { border-color: var(--correct); color: var(--correct); }
+.action-btn.skip-btn:hover { border-color: var(--wrong); color: var(--wrong); }
+
+.next-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--fg-dim);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.1s;
+}
+
+.next-btn:hover { border-color: var(--fg-bright); color: var(--fg-bright); }
+
+.quiz-options {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+}
+
+.quiz-opt {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 12px 10px;
+  cursor: pointer;
+  text-align: left;
+  letter-spacing: 0.5px;
+  transition: all 0.1s;
+  line-height: 1.4;
+}
+
+.quiz-opt:hover:not(:disabled) { border-color: var(--fg); }
+.quiz-opt.correct-ans { border-color: var(--correct); color: var(--correct); }
+.quiz-opt.wrong-ans { border-color: var(--wrong); color: var(--wrong); }
+.quiz-opt:disabled { cursor: default; }
+
+.result-flash {
+  font-family: var(--display);
+  font-size: 26px;
+  letter-spacing: 4px;
+  height: 32px;
+  text-align: center;
+  width: 100%;
+}
+
+.result-flash.c { color: var(--correct); }
+.result-flash.w { color: var(--wrong); }
+
+.done-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.done-label {
+  font-size: 11px;
+  color: var(--fg-dim);
+  letter-spacing: 3px;
+}
+
+.done-score {
+  font-family: var(--display);
+  font-size: 80px;
+  color: var(--fg-bright);
+  line-height: 1;
+}
+
+.done-msg {
+  font-size: 12px;
+  color: var(--fg-dim);
+  letter-spacing: 1px;
+  max-width: 340px;
+  line-height: 1.8;
+}
+
+.restart-btn {
+  background: var(--fg-bright);
+  border: 1px solid var(--fg-bright);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 12px 28px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+
+.restart-btn:hover {
+  background: transparent;
+  color: var(--fg-bright);
+}
+
+.footer {
+  font-size: 10px;
+  color: #444;
+  letter-spacing: 1px;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div class="header">
+    <div>
+    </div>
+    <div class="stats">
+      <div><span class="stat-val" id="stat-correct">0</span>correct</div>
+      <div><span class="stat-val" id="stat-seen">0</span>seen</div>
+      <div><span class="stat-val" id="stat-left">—</span>left</div>
+    </div>
+  </div>
+
+  <div class="top-row">
+    <div class="mode-bar">
+      <button class="mode-btn active" id="btn-flash" onclick="setMode('flash')">FLASH</button>
+      <button class="mode-btn" id="btn-quiz" onclick="setMode('quiz')">QUIZ</button>
+      <button class="mode-btn" id="btn-rev" onclick="setMode('rev')">EN→TP</button>
+    </div>
+    <div class="streak-row">streak: <span class="streak-val" id="streak-val">0</span></div>
+  </div>
+
+  <div class="category-row" id="cat-row"></div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="prog" style="width:0%"></div>
+  </div>
+
+  <div class="card-area" id="card-area">
+    <div class="card-counter" id="card-counter"></div>
+
+    <!-- Flash / Rev mode: 3D flip card -->
+    <div class="card-scene" id="card-scene" onclick="flipCard()">
+      <div class="flashcard" id="flashcard">
+        <div class="card-face front" id="card-front">
+          <span class="card-label" id="front-label">TOKI PONA</span>
+          <div class="card-word" id="front-word">—</div>
+          <div class="card-pos" id="front-pos"></div>
+          <span class="tap-hint">[ tap to flip ]</span>
+        </div>
+        <div class="card-face back" id="card-back">
+          <span class="card-label" id="back-label">MEANING</span>
+          <div class="card-word" id="back-word" style="font-size:26px"></div>
+          <div class="card-pos" id="back-pos"></div>
+          <div class="card-meaning" id="back-meaning"></div>
+          <div class="card-example" id="back-example"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz mode: plain card, no flip, no answer -->
+    <div class="quiz-card" id="quiz-card">
+      <span class="card-label">TOKI PONA</span>
+      <div class="card-word" id="quiz-word">—</div>
+      <div class="card-pos" id="quiz-pos"></div>
+    </div>
+
+    <div class="quiz-options" id="quiz-opts"></div>
+    <div class="result-flash" id="result-flash"></div>
+
+    <div class="action-row" id="action-row">
+      <button class="action-btn correct-btn" onclick="markCard(true)">✓ GOT IT</button>
+      <button class="action-btn skip-btn" onclick="markCard(false)">✗ MISSED</button>
+    </div>
+
+    <button class="next-btn" id="next-btn" onclick="nextCard()">NEXT CARD →</button>
+  </div>
+
+  <div class="done-screen" id="done-screen">
+    <div class="done-label">ROUND COMPLETE</div>
+    <div class="done-score" id="done-score"></div>
+    <div class="done-msg" id="done-msg"></div>
+    <button class="restart-btn" onclick="restart()">o musi sin! &bull; PLAY AGAIN</button>
+  </div>
+
+  <div class="footer">120 nimi pu &bull; toki pona by sonja lang &bull; flashcard game</div>
+
+</div>
+
+<script>
+  (function syncTheme() {
+    try {
+      if (window.parent && window.parent !== window) {
+        const parentHtml = window.parent.document.documentElement;
+        const localHtml = document.documentElement;
+
+        const updateTheme = () => {
+            if (parentHtml.classList.contains('dark')) {
+                localHtml.classList.add('dark');
+            } else {
+                localHtml.classList.remove('dark');
+            }
+        };
+
+        updateTheme();
+
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class') {
+              updateTheme();
+            }
+          });
+        });
+        observer.observe(parentHtml, { attributes: true });
+        return;
+      }
+    } catch (e) {
+      console.warn('Could not sync theme with parent window.', e);
+    }
+
+    // Fallback for standalone view
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
+<script>
+const WORDS = [
+  {w:"a",pos:"interj",en:"ah, ha, oh — emotional emphasis",cat:"particle",ex:"a a a! (laughter)"},
+  {w:"akesi",pos:"n",en:"reptile, amphibian, non-cute animal",cat:"nature",ex:"akesi li tawa lon telo."},
+  {w:"ala",pos:"mod",en:"no, not, zero, none",cat:"particle",ex:"mi ala sona e ni."},
+  {w:"alasa",pos:"vt",en:"to hunt, forage, seek",cat:"action",ex:"mi alasa e moku."},
+  {w:"ale",pos:"n/mod",en:"all, every, everything, 100",cat:"particle",ex:"ale li pona."},
+  {w:"anpa",pos:"mod",en:"down, below, under, humble",cat:"position",ex:"soweli li lon anpa."},
+  {w:"ante",pos:"mod",en:"different, other, changed",cat:"quality",ex:"nimi li ante."},
+  {w:"anu",pos:"conj",en:"or (marks a question or choice)",cat:"particle",ex:"sina pona anu ike?"},
+  {w:"awen",pos:"v",en:"to stay, to keep, to remain, to protect",cat:"action",ex:"o awen pona."},
+  {w:"e",pos:"part",en:"marks the direct object",cat:"particle",ex:"mi moku e kili."},
+  {w:"en",pos:"conj",en:"and (between subjects)",cat:"particle",ex:"mi en sina li toki."},
+  {w:"esun",pos:"n",en:"market, shop, trade, business",cat:"place",ex:"mi tawa esun."},
+  {w:"ijo",pos:"n",en:"thing, object, matter, phenomenon",cat:"basic",ex:"ijo ni li seme?"},
+  {w:"ike",pos:"mod",en:"bad, negative, complex, harmful",cat:"quality",ex:"tenpo ike li kama."},
+  {w:"ilo",pos:"n",en:"tool, instrument, device",cat:"object",ex:"ilo ni li pona."},
+  {w:"insa",pos:"n",en:"inside, contents, center, stomach",cat:"position",ex:"insa pi tomo li lete."},
+  {w:"jaki",pos:"mod",en:"disgusting, toxic, unclean, gross",cat:"quality",ex:"telo ni li jaki."},
+  {w:"jan",pos:"n",en:"person, people, human being",cat:"basic",ex:"jan li wile moku."},
+  {w:"jelo",pos:"mod",en:"yellow, yellowish",cat:"color",ex:"kili jelo li pona."},
+  {w:"jo",pos:"vt",en:"to have, to contain, to carry",cat:"action",ex:"mi jo e lipu."},
+  {w:"kala",pos:"n",en:"fish, sea creature",cat:"nature",ex:"kala li tawa lon telo."},
+  {w:"kalama",pos:"n/v",en:"sound, noise; to make sound",cat:"sense",ex:"kalama musi li pona."},
+  {w:"kama",pos:"v",en:"to come, to arrive, to happen",cat:"action",ex:"kama pona! (welcome)"},
+  {w:"kasi",pos:"n",en:"plant, herb, leaf, vegetation",cat:"nature",ex:"kasi li laso."},
+  {w:"ken",pos:"v/mod",en:"to be able to, can, possible",cat:"particle",ex:"mi ken toki."},
+  {w:"kepeken",pos:"prep",en:"to use, by means of, with",cat:"particle",ex:"mi toki kepeken ilo."},
+  {w:"kili",pos:"n",en:"fruit, vegetable, mushroom",cat:"food",ex:"kili li moku pona."},
+  {w:"kiwen",pos:"n/mod",en:"hard object, stone, metal, solid",cat:"object",ex:"kiwen li pakala e ilo."},
+  {w:"ko",pos:"n",en:"semi-solid, paste, clay, powder",cat:"object",ex:"ko li jaki."},
+  {w:"kon",pos:"n",en:"air, atmosphere, spirit, essence",cat:"nature",ex:"kon li lete."},
+  {w:"kule",pos:"mod",en:"coloured, colorful; a color",cat:"color",ex:"kule ni li seme?"},
+  {w:"kulupu",pos:"n",en:"group, community, society, company",cat:"social",ex:"kulupu ni li pona."},
+  {w:"kute",pos:"v/n",en:"to hear, to listen; ear",cat:"sense",ex:"mi kute e kalama."},
+  {w:"la",pos:"part",en:"context separator (if / when)",cat:"particle",ex:"tenpo pimeja la mi lape."},
+  {w:"lape",pos:"v/mod",en:"to sleep, to rest; sleeping",cat:"action",ex:"mi wile lape."},
+  {w:"laso",pos:"mod",en:"blue, green",cat:"color",ex:"telo li laso."},
+  {w:"lawa",pos:"n/v",en:"head, mind, leader; to lead, control",cat:"body",ex:"lawa mi li pakala."},
+  {w:"len",pos:"n",en:"clothing, fabric, cover",cat:"object",ex:"len li lete ala e mi."},
+  {w:"lete",pos:"mod",en:"cold, cool, raw, uncooked",cat:"quality",ex:"telo lete li pona."},
+  {w:"li",pos:"part",en:"between subject and verb / adjective",cat:"particle",ex:"jan li tawa."},
+  {w:"lili",pos:"mod",en:"small, few, little, less",cat:"quality",ex:"soweli lili li pona."},
+  {w:"linja",pos:"n",en:"long flexible object, line, rope, hair",cat:"object",ex:"linja li lon sinpin."},
+  {w:"lipu",pos:"n",en:"flat object, paper, book, document",cat:"object",ex:"mi lukin e lipu."},
+  {w:"loje",pos:"mod",en:"red, reddish",cat:"color",ex:"telo loje li tawa."},
+  {w:"lon",pos:"prep/v",en:"at, in, on; to exist, to be present",cat:"particle",ex:"mi lon tomo."},
+  {w:"luka",pos:"n",en:"hand, arm; five",cat:"body",ex:"luka mi li seli."},
+  {w:"lukin",pos:"v/n",en:"to look, to see, to seek; eye",cat:"sense",ex:"mi lukin e suno."},
+  {w:"lupa",pos:"n",en:"hole, door, window, portal",cat:"object",ex:"lupa li lon tomo."},
+  {w:"ma",pos:"n",en:"earth, land, territory, country",cat:"place",ex:"ma ni li suli."},
+  {w:"mama",pos:"n",en:"parent, ancestor, creator, caretaker",cat:"social",ex:"mama mi li pona."},
+  {w:"mani",pos:"n",en:"money, wealth, large domesticated animal",cat:"object",ex:"mani li jo ala e pona."},
+  {w:"meli",pos:"n",en:"woman, female, feminine person",cat:"social",ex:"meli li toki."},
+  {w:"mi",pos:"pro",en:"I, me, we, us",cat:"particle",ex:"mi pona."},
+  {w:"mije",pos:"n",en:"man, male, masculine person",cat:"social",ex:"mije li sona."},
+  {w:"moku",pos:"v/n",en:"to eat, to drink; food, meal",cat:"food",ex:"mi moku e kili."},
+  {w:"moli",pos:"v/mod",en:"to die, to kill; dead, dying",cat:"quality",ex:"kasi li moli."},
+  {w:"monsi",pos:"n",en:"back, behind, rear",cat:"position",ex:"jan li lon monsi mi."},
+  {w:"mu",pos:"interj",en:"animal sound — moo, woof, meow, etc.",cat:"particle",ex:"soweli li mu."},
+  {w:"mun",pos:"n",en:"moon, night sky object, star",cat:"nature",ex:"mun li suli."},
+  {w:"musi",pos:"mod/v",en:"fun, amusing, artistic; to play",cat:"quality",ex:"musi li pona tawa mi."},
+  {w:"mute",pos:"mod/n",en:"many, very, much; quantity",cat:"particle",ex:"jan mute li kama."},
+  {w:"nanpa",pos:"n/part",en:"number, digit; ordinal marker",cat:"particle",ex:"nanpa wan — number one."},
+  {w:"nasa",pos:"mod",en:"unusual, strange, silly, drunk",cat:"quality",ex:"jan nasa li kalama."},
+  {w:"nasin",pos:"n",en:"way, method, path, road, custom",cat:"place",ex:"nasin li suli."},
+  {w:"nena",pos:"n",en:"bump, hill, mountain, nose, button",cat:"nature",ex:"nena li suli mute."},
+  {w:"ni",pos:"mod",en:"this, that",cat:"particle",ex:"ijo ni li seme?"},
+  {w:"nimi",pos:"n",en:"word, name",cat:"basic",ex:"nimi mi li seme?"},
+  {w:"noka",pos:"n",en:"foot, leg, bottom",cat:"body",ex:"noka mi li wawa."},
+  {w:"o",pos:"part",en:"address or command marker",cat:"particle",ex:"o kama! (come!)"},
+  {w:"oko",pos:"n",en:"eye (synonym of lukin)",cat:"body",ex:"oko mi li loje."},
+  {w:"olin",pos:"vt",en:"to love, to have compassion for",cat:"emotion",ex:"mi olin e sina."},
+  {w:"ona",pos:"pro",en:"they, them, it",cat:"particle",ex:"ona li pona."},
+  {w:"open",pos:"v/mod",en:"to open, start, turn on; beginning",cat:"action",ex:"o open e lupa."},
+  {w:"pakala",pos:"v/n",en:"to ruin, break, damage; error",cat:"action",ex:"ilo li pakala."},
+  {w:"pali",pos:"v",en:"to do, to make, to work, to create",cat:"action",ex:"mi pali e tomo."},
+  {w:"palisa",pos:"n",en:"long hard object, stick, rod",cat:"object",ex:"palisa li lon ma."},
+  {w:"pan",pos:"n",en:"grain, bread, pasta, cereal",cat:"food",ex:"pan li moku pona."},
+  {w:"pana",pos:"vt",en:"to give, to send, to emit",cat:"action",ex:"o pana e ijo pona."},
+  {w:"pi",pos:"part",en:"regroups modifiers: X pi Y Z = X of (Y Z)",cat:"particle",ex:"tomo pi telo nasa."},
+  {w:"pilin",pos:"n/v",en:"heart, feeling; to feel, to think",cat:"emotion",ex:"pilin mi li pona."},
+  {w:"pimeja",pos:"mod",en:"black, dark, unlit",cat:"color",ex:"pimeja li ike ala."},
+  {w:"pini",pos:"mod/v",en:"past, finished, ended; to finish",cat:"action",ex:"pali mi li pini."},
+  {w:"pipi",pos:"n",en:"bug, insect, spider",cat:"nature",ex:"pipi lili li lon kasi."},
+  {w:"poka",pos:"n/prep",en:"side, hip; next to, nearby",cat:"position",ex:"jan li lon poka mi."},
+  {w:"poki",pos:"n",en:"container, box, cup, bowl",cat:"object",ex:"poki li jo e telo."},
+  {w:"pona",pos:"mod/n",en:"good, simple, positive, nice; goodness",cat:"quality",ex:"pona! (great / thanks!)"},
+  {w:"pu",pos:"mod",en:"interacting with the official Toki Pona book",cat:"particle",ex:"mi pu."},
+  {w:"sama",pos:"mod/prep",en:"same, similar; like, as",cat:"quality",ex:"ona li sama mi."},
+  {w:"seli",pos:"mod/n",en:"hot, warm, cooked; heat, fire",cat:"quality",ex:"ilo seli li pona."},
+  {w:"selo",pos:"n",en:"outer layer, skin, bark, shell",cat:"body",ex:"selo kasi li laso."},
+  {w:"seme",pos:"q",en:"what, which (question word)",cat:"particle",ex:"sina jo e seme?"},
+  {w:"sewi",pos:"n/mod",en:"above, high, divine, sacred",cat:"position",ex:"sewi li suno."},
+  {w:"sijelo",pos:"n",en:"body, physical form, torso",cat:"body",ex:"sijelo mi li pona."},
+  {w:"sike",pos:"n/mod",en:"circle, ball, cycle; round",cat:"object",ex:"sike li lon sewi."},
+  {w:"sin",pos:"mod",en:"new, fresh, another, additional",cat:"quality",ex:"ijo sin li kama."},
+  {w:"sina",pos:"pro",en:"you (singular and plural)",cat:"particle",ex:"sina pona!"},
+  {w:"sinpin",pos:"n",en:"face, wall, front, chest",cat:"position",ex:"sinpin tomo li walo."},
+  {w:"sitelen",pos:"n/v",en:"image, picture, writing; to draw",cat:"action",ex:"mi sitelen e kasi."},
+  {w:"sona",pos:"v/n",en:"to know, to understand; knowledge",cat:"emotion",ex:"mi sona e toki pona."},
+  {w:"soweli",pos:"n",en:"animal, land mammal, loveable creature",cat:"nature",ex:"soweli li musi."},
+  {w:"suli",pos:"mod",en:"big, great, important, long",cat:"quality",ex:"tomo suli li lon ma."},
+  {w:"suno",pos:"n",en:"sun, light, brightness, glow",cat:"nature",ex:"suno li wawa."},
+  {w:"supa",pos:"n",en:"flat surface, furniture, floor",cat:"object",ex:"mi lape lon supa."},
+  {w:"suwi",pos:"mod",en:"sweet, cute, adorable, innocent",cat:"quality",ex:"soweli li suwi mute."},
+  {w:"tan",pos:"prep",en:"from, because of, by",cat:"particle",ex:"mi kama tan ma ante."},
+  {w:"taso",pos:"conj/mod",en:"but, however; only, just",cat:"particle",ex:"mi taso li lon."},
+  {w:"tawa",pos:"prep/v",en:"to, toward, for; to move, to go",cat:"action",ex:"mi tawa tomo."},
+  {w:"telo",pos:"n",en:"water, liquid, fluid",cat:"nature",ex:"mi moku e telo."},
+  {w:"tenpo",pos:"n",en:"time, period, situation",cat:"basic",ex:"tenpo ni li pona."},
+  {w:"toki",pos:"v/n",en:"to speak, to say; language, speech",cat:"action",ex:"toki! (hello!)"},
+  {w:"tomo",pos:"n",en:"indoor space, house, building",cat:"place",ex:"tomo mi li lili."},
+  {w:"tu",pos:"mod/n",en:"two; to split, divide",cat:"particle",ex:"jan tu li tawa."},
+  {w:"unpa",pos:"v/mod",en:"to have sex with; sexual",cat:"action",ex:"—"},
+  {w:"uta",pos:"n",en:"mouth, lips",cat:"body",ex:"uta mi li suwi."},
+  {w:"utala",pos:"v/n",en:"to fight, to battle; conflict",cat:"action",ex:"utala ala, pona tawa!"},
+  {w:"walo",pos:"mod",en:"white, light-coloured, pale",cat:"color",ex:"len walo li pona."},
+  {w:"wan",pos:"mod/n",en:"one; unique; to unite",cat:"particle",ex:"jan wan li lon."},
+  {w:"waso",pos:"n",en:"bird, flying creature",cat:"nature",ex:"waso li musi."},
+  {w:"wawa",pos:"mod",en:"strong, powerful, energetic, confident",cat:"quality",ex:"ona li wawa."},
+  {w:"weka",pos:"mod/v",en:"away, absent, remote; to remove",cat:"action",ex:"ona li weka."},
+  {w:"wile",pos:"v/mod",en:"to want, to need, must",cat:"particle",ex:"mi wile moku."},
+];
+
+const CATS = ["all","basic","particle","action","quality","nature","body","social","food","color","position","emotion","sense","place","object"];
+
+let mode = 'flash', deck = [], idx = 0, correct = 0, seen = 0, streak = 0, revealed = false, activeCat = 'all', quizAnswered = false;
+
+function shuffle(arr) {
+  let a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildDeck() {
+  let pool = activeCat === 'all' ? WORDS : WORDS.filter(w => w.cat === activeCat);
+  deck = shuffle(pool);
+  idx = 0; correct = 0; seen = 0; streak = 0;
+  updateStats();
+}
+
+function setMode(m) {
+  mode = m;
+  ['flash','quiz','rev'].forEach(x => document.getElementById('btn-' + x).classList.toggle('active', x === m));
+  buildDeck();
+  showCard();
+}
+
+function setCategory(cat) {
+  activeCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  buildDeck();
+  showCard();
+}
+
+function buildCatRow() {
+  const row = document.getElementById('cat-row');
+  CATS.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'cat-btn' + (c === activeCat ? ' active' : '');
+    b.dataset.cat = c;
+    b.textContent = c;
+    b.onclick = () => setCategory(c);
+    row.appendChild(b);
+  });
+}
+
+function updateStats() {
+  document.getElementById('stat-correct').textContent = correct;
+  document.getElementById('stat-seen').textContent = seen;
+  document.getElementById('stat-left').textContent = deck.length - idx;
+  document.getElementById('streak-val').textContent = streak;
+  const pct = deck.length ? (idx / deck.length * 100) : 0;
+  document.getElementById('prog').style.width = pct + '%';
+  document.getElementById('card-counter').textContent = deck.length ? (idx + 1) + ' / ' + deck.length : '';
+}
+
+function showCard() {
+  document.getElementById('done-screen').style.display = 'none';
+  document.getElementById('card-area').style.display = 'flex';
+
+  if (!deck.length || idx >= deck.length) { showDone(); return; }
+
+  const card = deck[idx];
+  revealed = false;
+  quizAnswered = false;
+
+  const scene = document.getElementById('card-scene');
+  const fc = document.getElementById('flashcard');
+  const quizCard = document.getElementById('quiz-card');
+  const actionRow = document.getElementById('action-row');
+  const nextBtn = document.getElementById('next-btn');
+  const quizOpts = document.getElementById('quiz-opts');
+  const rf = document.getElementById('result-flash');
+
+  rf.textContent = '';
+  rf.className = 'result-flash';
+
+  // reset flip without animation
+  fc.style.transition = 'none';
+  fc.classList.remove('flipped');
+  requestAnimationFrame(() => { fc.style.transition = ''; });
+
+  if (mode === 'quiz') {
+    scene.style.display = 'none';
+    quizCard.style.display = 'flex';
+    actionRow.style.display = 'none';
+    nextBtn.style.display = 'none';
+    quizOpts.style.display = 'grid';
+
+    document.getElementById('quiz-word').textContent = card.w;
+    document.getElementById('quiz-word').style.fontSize = '64px';
+    document.getElementById('quiz-pos').textContent = '[' + card.pos + '] ' + card.cat;
+
+    buildQuiz(card);
+
+  } else {
+    scene.style.display = 'block';
+    quizCard.style.display = 'none';
+    quizOpts.style.display = 'none';
+    scene.classList.remove('no-flip');
+
+    // action row hidden until flipped
+    actionRow.querySelectorAll('.action-btn').forEach(b => b.style.display = 'none');
+    nextBtn.style.display = 'none';
+
+    if (mode === 'rev') {
+      document.getElementById('front-label').textContent = 'ENGLISH → TOKI PONA';
+      document.getElementById('front-word').textContent = card.en;
+      document.getElementById('front-word').style.fontSize = '22px';
+      document.getElementById('front-pos').textContent = '[' + card.pos + '] ' + card.cat;
+      document.getElementById('back-label').textContent = 'TOKI PONA';
+      document.getElementById('back-word').textContent = card.w;
+      document.getElementById('back-word').style.fontSize = '64px';
+      document.getElementById('back-pos').textContent = '';
+      document.getElementById('back-meaning').textContent = '';
+      document.getElementById('back-example').textContent = 'e.g. ' + card.ex;
+    } else {
+      document.getElementById('front-label').textContent = 'TOKI PONA';
+      document.getElementById('front-word').textContent = card.w;
+      document.getElementById('front-word').style.fontSize = '64px';
+      document.getElementById('front-pos').textContent = '[' + card.pos + '] ' + card.cat;
+      document.getElementById('back-label').textContent = 'MEANING';
+      document.getElementById('back-word').textContent = card.en;
+      document.getElementById('back-word').style.fontSize = '22px';
+      document.getElementById('back-pos').textContent = '[' + card.pos + '] ' + card.cat;
+      document.getElementById('back-meaning').textContent = '';
+      document.getElementById('back-example').textContent = 'e.g. ' + card.ex;
+    }
+  }
+
+  updateStats();
+}
+
+function flipCard() {
+  if (mode === 'quiz') return;
+  const fc = document.getElementById('flashcard');
+  const actionRow = document.getElementById('action-row');
+  const nextBtn = document.getElementById('next-btn');
+  if (fc.classList.contains('flipped')) {
+    fc.classList.remove('flipped');
+    revealed = false;
+    actionRow.querySelectorAll('.action-btn').forEach(b => b.style.display = 'none');
+    nextBtn.style.display = 'none';
+  } else {
+    fc.classList.add('flipped');
+    revealed = true;
+    setTimeout(() => {
+      actionRow.querySelectorAll('.action-btn').forEach(b => b.style.display = 'block');
+      nextBtn.style.display = 'block';
+    }, 300);
+  }
+}
+
+function markCard(got) {
+  if (got) { correct++; streak++; } else { streak = 0; }
+  seen++;
+  idx++;
+  updateStats();
+  showCard();
+}
+
+function nextCard() {
+  idx++;
+  updateStats();
+  showCard();
+}
+
+function buildQuiz(card) {
+  const pool = WORDS.filter(w => w.w !== card.w);
+  const wrong = shuffle(pool).slice(0, 3);
+  const opts = shuffle([card, ...wrong]);
+  const qOpts = document.getElementById('quiz-opts');
+  qOpts.innerHTML = '';
+  opts.forEach(o => {
+    const b = document.createElement('button');
+    b.className = 'quiz-opt';
+    b.textContent = o.en;
+    b.onclick = () => checkQuiz(b, o.w === card.w);
+    qOpts.appendChild(b);
+  });
+}
+
+function checkQuiz(btn, isCorrect) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  const rf = document.getElementById('result-flash');
+  const btns = document.getElementById('quiz-opts').querySelectorAll('.quiz-opt');
+  btns.forEach(b => b.disabled = true);
+  if (isCorrect) {
+    btn.classList.add('correct-ans');
+    rf.textContent = 'PONA!';
+    rf.className = 'result-flash c';
+    correct++; streak++;
+  } else {
+    btn.classList.add('wrong-ans');
+    rf.textContent = 'IKE...';
+    rf.className = 'result-flash w';
+    btns.forEach(b => { if (!b.classList.contains('wrong-ans')) b.classList.add('correct-ans'); });
+    streak = 0;
+  }
+  seen++;
+  updateStats();
+  setTimeout(() => { idx++; showCard(); }, 1500);
+}
+
+function showDone() {
+  document.getElementById('card-area').style.display = 'none';
+  const ds = document.getElementById('done-screen');
+  ds.style.display = 'flex';
+  const pct = deck.length ? Math.round(correct / deck.length * 100) : 0;
+  document.getElementById('done-score').textContent = pct + '%';
+  const msgs = [
+    [90, 'wawa! sina sona e toki pona!\nexcellent mastery!'],
+    [70, 'pona! sina pali pona!\ngood work, keep it up!'],
+    [50, 'awen o! you\'re getting there.\nkeep practicing!'],
+    [0,  'o awen musi!\nkeep playing — it gets easier!'],
+  ];
+  document.getElementById('done-msg').textContent = msgs.find(m => pct >= m[0])[1];
+}
+
+function restart() {
+  buildDeck();
+  showCard();
+}
+
+buildCatRow();
+buildDeck();
+showCard();
+</script>
+</body>
+</html>

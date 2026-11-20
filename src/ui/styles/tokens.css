@@ -1,0 +1,115 @@
+/* Design tokens — "ink and paper".
+   Light = warm paper with ink. Dark = tenpo pimeja (night ink). */
+
+:root {
+  color-scheme: light;
+
+  /* surfaces */
+  --paper: #f4efe4;
+  --paper-raised: #fbf8f1;
+  --paper-sunk: #ebe4d5;
+  --rule: #d6cdbb;
+  --rule-strong: #b9ae98;
+
+  /* ink */
+  --ink: #1d2433;
+  --ink-soft: #3f4657;
+  --ink-muted: #5d6372;
+
+  /* accents */
+  --accent: #b0412b;          /* vermilion seal */
+  --accent-wash: #f3dfd6;
+  --good: #2c6a43;
+  --good-wash: #e0ece0;
+  --bad: #a3392a;
+  --bad-wash: #f4e0da;
+
+  --grain-opacity: 0.45;
+  --shadow-card:
+    0 1px 0 rgb(255 255 255 / 0.7) inset,
+    0 1px 2px rgb(60 45 20 / 0.06),
+    0 8px 24px -8px rgb(60 45 20 / 0.18),
+    0 24px 48px -24px rgb(60 45 20 / 0.18);
+
+  /* type */
+  --font-ui: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-word: clamp(3.25rem, 14vw, 5.5rem);
+
+  /* shape & space */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --gap: 12px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 120ms;
+  --dur: 220ms;
+  --dur-reveal: 620ms;
+  --dur-draw: 900ms;     /* glyph outline trace */
+  --dur-ink: 450ms;      /* glyph fill after the trace */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --paper: #12161f;
+    --paper-raised: #1a1f2b;
+    --paper-sunk: #0e1118;
+    --rule: #2c3343;
+    --rule-strong: #46506a;
+    --ink: #ece5d6;
+    --ink-soft: #cdc6b8;
+    --ink-muted: #a29d93;
+    --accent: #e8927a;
+    --accent-wash: #3a241f;
+    --good: #85c79a;
+    --good-wash: #1b3024;
+    --bad: #f0947f;
+    --bad-wash: #3a221e;
+    --grain-opacity: 0.12;
+    --shadow-card:
+      0 1px 0 rgb(255 255 255 / 0.04) inset,
+      0 8px 24px -8px rgb(0 0 0 / 0.5),
+      0 24px 48px -24px rgb(0 0 0 / 0.6);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #12161f;
+  --paper-raised: #1a1f2b;
+  --paper-sunk: #0e1118;
+  --rule: #2c3343;
+  --rule-strong: #46506a;
+  --ink: #ece5d6;
+  --ink-soft: #cdc6b8;
+  --ink-muted: #a29d93;
+  --accent: #e8927a;
+  --accent-wash: #3a241f;
+  --good: #85c79a;
+  --good-wash: #1b3024;
+  --bad: #f0947f;
+  --bad-wash: #3a221e;
+  --grain-opacity: 0.12;
+  --shadow-card:
+    0 1px 0 rgb(255 255 255 / 0.04) inset,
+    0 8px 24px -8px rgb(0 0 0 / 0.5),
+    0 24px 48px -24px rgb(0 0 0 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-reveal: 0ms;
+    --dur-draw: 0ms;
+    --dur-ink: 0ms;
+  }
+}

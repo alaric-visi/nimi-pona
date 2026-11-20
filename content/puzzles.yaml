@@ -1,0 +1,39 @@
+# Compound puzzles ("o nimi e ni" — name this!). Toki Pona has no word for most things:
+# you describe them. Every answer in `accept` is fine; the first is the most common.
+# `hint` nudges toward the head word. Checked by tests/play.test.ts (known words, linted).
+
+- { en: "a car", hint: "a moving room", accept: ["tomo tawa", "ilo tawa", "tomo tawa ma"] }
+- { en: "a friend", hint: "a good person", accept: ["jan pona"] }
+- { en: "a child", hint: "a small person", accept: ["jan lili"] }
+- { en: "a bathroom", hint: "a water room", accept: ["tomo telo"] }
+- { en: "alcohol", hint: "strange water", accept: ["telo nasa"] }
+- { en: "music", hint: "a fun sound", accept: ["kalama musi"] }
+- { en: "a city", hint: "building land", accept: ["ma tomo"] }
+- { en: "a forest", hint: "plant land", accept: ["ma kasi", "kasi mute"] }
+- { en: "the sea", hint: "big water", accept: ["telo suli"] }
+- { en: "a computer", hint: "a knowledge tool", accept: ["ilo sona"] }
+- { en: "a school", hint: "a knowledge building", accept: ["tomo sona"] }
+- { en: "a teacher", hint: "a person who gives knowledge", accept: ["jan pana sona", "jan sona", "jan pi pana sona"] }
+- { en: "night", hint: "dark time", accept: ["tenpo pimeja"] }
+- { en: "a day", hint: "sun time", accept: ["tenpo suno"] }
+- { en: "a year", hint: "a sun circle", accept: ["sike suno"] }
+- { en: "a bed", hint: "a sleep surface", accept: ["supa lape"] }
+- { en: "a kitchen", hint: "a food room", accept: ["tomo moku"] }
+- { en: "a shoe", hint: "foot cloth", accept: ["len noka"] }
+- { en: "a hat", hint: "head cloth", accept: ["len lawa"] }
+- { en: "a mother", hint: "a female parent", accept: ["mama meli"] }
+- { en: "a father", hint: "a male parent", accept: ["mama mije"] }
+- { en: "happy", hint: "a good feeling", accept: ["pilin pona"] }
+- { en: "sad", hint: "a bad feeling", accept: ["pilin ike"] }
+- { en: "beautiful", hint: "good to look at", accept: ["pona lukin", "pona tawa lukin"] }
+- { en: "an aeroplane", hint: "a tool that moves through the air", accept: ["ilo tawa kon", "tomo tawa kon", "ilo tawa sewi", "ilo waso"] }
+- { en: "coffee", hint: "dark water", accept: ["telo pimeja", "telo pimeja seli"] }
+- { en: "milk", hint: "white water", accept: ["telo walo", "telo mama"] }
+- { en: "rain", hint: "water from above", accept: ["telo sewi", "telo tan sewi"] }
+- { en: "a star", hint: "a small night-sky light", accept: ["mun lili", "suno lili"] }
+- { en: "sweets", hint: "sweet food", accept: ["moku suwi"] }
+- { en: "a phone", hint: "a talking tool", accept: ["ilo toki"] }
+- { en: "a library", hint: "a book building", accept: ["tomo lipu"] }
+- { en: "a doctor", hint: "a person of body-goodness", accept: ["jan pi pona sijelo", "jan pona sijelo"] }
+- { en: "a soldier", hint: "a fighting person", accept: ["jan utala"] }
+- { en: "a leader", hint: "a head person", accept: ["jan lawa"] }

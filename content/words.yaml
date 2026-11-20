@@ -1,0 +1,1054 @@
+# Toki Pona vocabulary — human-authored source of truth (Phase 1 schema).
+#
+#   id        the word, lower case
+#   tier      pu          one of the 120 words of Toki Pona: The Language of Good (2014)
+#             pu-synonym  alternative words listed in pu (kin = a, namako = sin, oko = lukin)
+#             ku          widely used words recorded in ku (2021). [verify] against Linku usage categories
+#   roles     grammatical functions (from pu), NOT English parts of speech:
+#             content | particle | pronoun | preverb | preposition | number | interjection
+#   themes    semantic topics used for filtering and lessons (a word may have several)
+#   concept   short display line naming the word's semantic space
+#   glosses   English words that are acceptable answers (used for grading and distractor filtering)
+#   synonyms  word ids that mean (nearly) the same — never offered as quiz distractors
+#   variants  alternative spellings (not separate cards)
+#   notes     one-line usage note shown on the card
+#   sensitive true = excluded from games unless the learner opts in
+#   glyph     sitelen pona asset key; defaults to id (Phase 2 supplies assets)
+#
+# Example sentences live in sentences.yaml and are linked automatically by the words they use.
+
+# ── particles & grammar words ───────────────────────────────────────────────
+- id: li
+  tier: pu
+  roles: [particle]
+  themes: [grammar]
+  concept: separates the subject from what is said about it
+  glosses: [predicate marker]
+  notes: Not used when the subject is just "mi" or "sina" — "mi pona", but "jan li pona".
+
+- id: e
+  tier: pu
+  roles: [particle]
+  themes: [grammar]
+  concept: marks the direct object
+  glosses: [object marker]
+  notes: Repeat it for several objects — "mi moku e kili e pan".
+
+- id: la
+  tier: pu
+  roles: [particle]
+  themes: [grammar, time]
+  concept: "context marker: [context] la [sentence]"
+  glosses: [context marker, if, when]
+  notes: Sets the scene for what follows — "tenpo pimeja la mi lape" (at night, I sleep).
+
+- id: pi
+  tier: pu
+  roles: [particle]
+  themes: [grammar]
+  concept: "of — regroups the two or more words after it"
+  glosses: [of]
+  notes: Always needs at least two words after it — "jan pi toki pona", never "jan pi toki".
+
+- id: o
+  tier: pu
+  roles: [particle]
+  themes: [grammar]
+  concept: "commands and wishes; calling someone: O!"
+  glosses: [command marker, vocative, hey]
+  notes: Replaces "li" in commands — "o kama!" — and follows a name to address someone — "jan Lisa o".
+
+- id: en
+  tier: pu
+  roles: [particle]
+  themes: [grammar]
+  concept: and (joins subjects only)
+  glosses: [and]
+  notes: Only between subjects — "mi en sina li toki". Repeat "e" or "li" elsewhere.
+
+- id: anu
+  tier: pu
+  roles: [particle]
+  themes: [grammar]
+  concept: or
+  glosses: [or]
+  notes: '"... anu seme?" turns a statement into a question — "sina pona anu seme?"'
+
+- id: seme
+  tier: pu
+  roles: [particle]
+  themes: [grammar]
+  concept: "what? which? who? — question word"
+  glosses: [what, which, who]
+  notes: Goes in the place of the answer — "sina moku e seme?" (you eat what?).
+
+- id: taso
+  tier: pu
+  roles: [particle, content]
+  themes: [grammar]
+  concept: but, however; only, just
+  glosses: [but, however, only, just, merely]
+  notes: At the start of a sentence it means "but"; after a word it means "only".
+
+- id: a
+  tier: pu
+  roles: [interjection]
+  themes: [grammar]
+  concept: "ah! oh! ha! — emotion or emphasis"
+  glosses: [ah, oh, ha, wow]
+  synonyms: [kin]
+  notes: Alone as an exclamation, or after a phrase for emphasis — "pona a!"
+
+- id: kin
+  tier: pu-synonym
+  roles: [particle]
+  themes: [grammar]
+  concept: also, too, indeed (emphasis)
+  glosses: [also, too, indeed, really, even]
+  synonyms: [a]
+  notes: Listed in pu as a synonym of "a"; in practice used to mean "too / indeed".
+
+- id: n
+  tier: ku
+  roles: [interjection]
+  themes: [grammar]
+  concept: "hmm… um… (thinking)"
+  glosses: [hmm, um, uh, er]
+  notes: A syllabic nasal — the only word that breaks the usual sound rules.
+
+# ── pronouns & people ───────────────────────────────────────────────────────
+- id: mi
+  tier: pu
+  roles: [pronoun]
+  themes: [people]
+  concept: I, me, we, us; my, our
+  glosses: [I, me, we, us, my, our, mine, ours]
+  notes: '"mi mute" makes the plural clear — "we".'
+
+- id: sina
+  tier: pu
+  roles: [pronoun]
+  themes: [people]
+  concept: you; your
+  glosses: [you, your, yours]
+
+- id: ona
+  tier: pu
+  roles: [pronoun]
+  themes: [people]
+  concept: he, she, it, they
+  glosses: [he, she, it, they, him, her, them, his, its, their]
+  notes: Ungendered — one word for every third person.
+
+- id: jan
+  tier: pu
+  roles: [content]
+  themes: [people]
+  concept: person, human, somebody
+  glosses: [person, people, human, someone, somebody, humanity]
+  notes: Also introduces names — "jan Sonja". "jan pona" = friend.
+
+- id: mama
+  tier: pu
+  roles: [content]
+  themes: [people]
+  concept: parent, ancestor; creator, caretaker
+  glosses: [parent, mother, father, ancestor, creator, origin, caretaker]
+  notes: '"mama meli" = mother, "mama mije" = father.'
+
+- id: meli
+  tier: pu
+  roles: [content]
+  themes: [people]
+  concept: woman, female, feminine
+  glosses: [woman, female, feminine, girl, wife]
+
+- id: mije
+  tier: pu
+  roles: [content]
+  themes: [people]
+  concept: man, male, masculine
+  glosses: [man, male, masculine, boy, husband]
+
+- id: tonsi
+  tier: ku
+  roles: [content]
+  themes: [people]
+  concept: non-binary, gender-nonconforming
+  glosses: [non-binary, nonbinary, genderqueer, gender-nonconforming]
+  notes: A community word that completes meli and mije.
+
+- id: kulupu
+  tier: pu
+  roles: [content]
+  themes: [people]
+  concept: group, community, society
+  glosses: [group, community, society, team, company, nation, collection]
+
+# ── body ────────────────────────────────────────────────────────────────────
+- id: sijelo
+  tier: pu
+  roles: [content]
+  themes: [body]
+  concept: body, physical form, torso
+  glosses: [body, torso, physical, health]
+
+- id: lawa
+  tier: pu
+  roles: [content]
+  themes: [body, people]
+  concept: head, mind; to lead, control
+  glosses: [head, mind, lead, leader, control, rule, govern, main, steer]
+
+- id: luka
+  tier: pu
+  roles: [content, number]
+  themes: [body, numbers]
+  concept: hand, arm; five
+  glosses: [hand, arm, five, touch]
+  notes: Five in pu-style numbers — "luka luka" = 10.
+
+- id: noka
+  tier: pu
+  roles: [content]
+  themes: [body, position]
+  concept: foot, leg; bottom, base
+  glosses: [foot, leg, feet, base, bottom part]
+
+- id: uta
+  tier: pu
+  roles: [content]
+  themes: [body]
+  concept: mouth, lips
+  glosses: [mouth, lips, oral, jaw]
+
+- id: oko
+  tier: pu-synonym
+  roles: [content]
+  themes: [body, senses]
+  concept: eye
+  glosses: [eye, eyes]
+  synonyms: [lukin]
+  notes: Listed in pu as a synonym of "lukin"; most speakers use it for the eye itself.
+
+- id: nena
+  tier: pu
+  roles: [content]
+  themes: [body, nature]
+  concept: bump, hill, mountain; nose; button
+  glosses: [bump, hill, mountain, nose, button, knob, protrusion]
+
+- id: selo
+  tier: pu
+  roles: [content]
+  themes: [body, objects]
+  concept: outer layer — skin, peel, shell, bark
+  glosses: [skin, peel, shell, bark, surface, boundary, outer layer]
+
+- id: insa
+  tier: pu
+  roles: [content]
+  themes: [body, position]
+  concept: inside, inner part, centre; stomach
+  glosses: [inside, interior, inner, centre, center, middle, contents, stomach]
+
+- id: monsi
+  tier: pu
+  roles: [content]
+  themes: [body, position]
+  concept: back, behind, rear
+  glosses: [back, behind, rear, butt]
+
+- id: sinpin
+  tier: pu
+  roles: [content]
+  themes: [body, position]
+  concept: front, face, wall, chest
+  glosses: [front, face, wall, chest]
+
+# ── animals ─────────────────────────────────────────────────────────────────
+- id: soweli
+  tier: pu
+  roles: [content]
+  themes: [animals]
+  concept: land mammal, animal
+  glosses: [animal, mammal, beast, cat, dog, cow]
+
+- id: waso
+  tier: pu
+  roles: [content]
+  themes: [animals]
+  concept: bird, flying creature
+  glosses: [bird, flying creature]
+
+- id: kala
+  tier: pu
+  roles: [content]
+  themes: [animals]
+  concept: fish, sea creature
+  glosses: [fish, sea creature, marine animal]
+
+- id: akesi
+  tier: pu
+  roles: [content]
+  themes: [animals]
+  concept: reptile, amphibian; creepy creature
+  glosses: [reptile, amphibian, lizard, frog, snake, turtle]
+
+- id: pipi
+  tier: pu
+  roles: [content]
+  themes: [animals]
+  concept: bug, insect, spider
+  glosses: [bug, insect, spider, ant, beetle]
+
+- id: mu
+  tier: pu
+  roles: [interjection]
+  themes: [animals]
+  concept: "animal noise — moo, woof, meow…"
+  glosses: [animal noise, moo, woof, meow, tweet]
+
+- id: kijetesantakalu
+  tier: ku
+  roles: [content]
+  themes: [animals]
+  concept: raccoon (and its relatives)
+  glosses: [raccoon, racoon, coati, red panda]
+  notes: A community favourite that started as a joke — the longest common word.
+
+# ── nature ──────────────────────────────────────────────────────────────────
+- id: suno
+  tier: pu
+  roles: [content]
+  themes: [nature]
+  concept: sun; light, brightness
+  glosses: [sun, light, bright, shine, glow, sunny]
+
+- id: mun
+  tier: pu
+  roles: [content]
+  themes: [nature]
+  concept: moon, star, night-sky object
+  glosses: [moon, star, planet, lunar]
+
+- id: telo
+  tier: pu
+  roles: [content]
+  themes: [nature, food]
+  concept: water, liquid; to wash
+  glosses: [water, liquid, fluid, juice, sauce, wash, wet]
+
+- id: kon
+  tier: pu
+  roles: [content]
+  themes: [nature, mind]
+  concept: air, breath, wind; spirit, essence
+  glosses: [air, breath, wind, gas, spirit, soul, essence, atmosphere]
+
+- id: ma
+  tier: pu
+  roles: [content]
+  themes: [nature, places]
+  concept: land, earth, ground; country, place
+  glosses: [land, earth, ground, soil, country, region, place, territory, outdoors, world]
+  notes: '"ma tomo" = city.'
+
+- id: kasi
+  tier: pu
+  roles: [content]
+  themes: [nature]
+  concept: plant, vegetation, leaf
+  glosses: [plant, vegetation, herb, leaf, tree, flower, grass]
+
+- id: kiwen
+  tier: pu
+  roles: [content]
+  themes: [nature, objects]
+  concept: hard thing — rock, stone, metal; hard
+  glosses: [rock, stone, metal, mineral, hard, solid]
+
+- id: seli
+  tier: pu
+  roles: [content]
+  themes: [nature, qualities]
+  concept: fire, heat; hot, warm, cooked
+  glosses: [fire, heat, hot, warm, cook, burn, cooked]
+
+- id: soko
+  tier: ku
+  roles: [content]
+  themes: [nature, food]
+  concept: mushroom, fungus
+  glosses: [mushroom, fungus, fungi]
+
+# ── food ────────────────────────────────────────────────────────────────────
+- id: moku
+  tier: pu
+  roles: [content]
+  themes: [food, actions]
+  concept: eat, drink, consume; food
+  glosses: [eat, drink, consume, swallow, food, meal]
+  notes: Covers drinking too — "mi moku e telo".
+
+- id: kili
+  tier: pu
+  roles: [content]
+  themes: [food]
+  concept: fruit, vegetable, mushroom
+  glosses: [fruit, vegetable, mushroom, produce]
+
+- id: pan
+  tier: pu
+  roles: [content]
+  themes: [food]
+  concept: grain, bread, rice, pasta
+  glosses: [grain, bread, rice, pasta, cereal, wheat, corn]
+
+- id: suwi
+  tier: pu
+  roles: [content]
+  themes: [food, qualities]
+  concept: sweet, cute, adorable
+  glosses: [sweet, cute, adorable, candy, fragrant, innocent, dear]
+
+- id: namako
+  tier: pu-synonym
+  roles: [content]
+  themes: [food, qualities]
+  concept: spice, extra, additional
+  glosses: [spice, seasoning, extra, additional, embellishment]
+  synonyms: [sin]
+  notes: Listed in pu as a synonym of "sin"; often used for spice and extras.
+
+# ── objects ─────────────────────────────────────────────────────────────────
+- id: ijo
+  tier: pu
+  roles: [content]
+  themes: [objects]
+  concept: thing, object, something
+  glosses: [thing, object, something, stuff, matter]
+
+- id: ilo
+  tier: pu
+  roles: [content]
+  themes: [objects]
+  concept: tool, device, machine
+  glosses: [tool, device, machine, instrument, gadget]
+  notes: '"ilo sona" = computer, "ilo tawa" = vehicle.'
+
+- id: lipu
+  tier: pu
+  roles: [content]
+  themes: [objects, communication]
+  concept: flat thing — paper, page, book, document
+  glosses: [paper, page, book, document, card, sheet, website, ticket]
+
+- id: poki
+  tier: pu
+  roles: [content]
+  themes: [objects]
+  concept: container — box, bag, cup, bowl
+  glosses: [container, box, bag, cup, bowl, jar, drawer, basket]
+
+- id: linja
+  tier: pu
+  roles: [content]
+  themes: [objects]
+  concept: long flexible thing — string, rope, hair, line
+  glosses: [string, rope, cord, thread, hair, line, cable]
+
+- id: palisa
+  tier: pu
+  roles: [content]
+  themes: [objects]
+  concept: long hard thing — stick, rod, branch
+  glosses: [stick, rod, pole, branch, bar, staff]
+
+- id: sike
+  tier: pu
+  roles: [content]
+  themes: [objects, time]
+  concept: circle, ball, wheel, cycle; round
+  glosses: [circle, round, ball, wheel, cycle, sphere, ring, year]
+  notes: '"sike suno" = a year (one cycle of the sun).'
+
+- id: supa
+  tier: pu
+  roles: [content]
+  themes: [objects]
+  concept: flat surface — table, bed, floor
+  glosses: [table, bed, floor, surface, platform, shelf, furniture]
+
+- id: len
+  tier: pu
+  roles: [content]
+  themes: [objects]
+  concept: cloth, clothing, fabric; cover
+  glosses: [cloth, clothing, clothes, fabric, textile, cover, privacy]
+
+- id: ko
+  tier: pu
+  roles: [content]
+  themes: [objects]
+  concept: paste, clay, powder, goo
+  glosses: [paste, clay, powder, gum, dough, goo, mud, semi-solid]
+
+- id: lupa
+  tier: pu
+  roles: [content]
+  themes: [objects, places]
+  concept: hole, opening — door, window
+  glosses: [hole, opening, door, window, pit, cave]
+
+- id: mani
+  tier: pu
+  roles: [content]
+  themes: [objects]
+  concept: money, wealth; large farm animal
+  glosses: [money, cash, wealth, currency, livestock]
+
+- id: misikeke
+  tier: ku
+  roles: [content]
+  themes: [objects, body]
+  concept: medicine, cure
+  glosses: [medicine, medication, cure, remedy]
+
+- id: leko
+  tier: ku
+  roles: [content]
+  themes: [objects]
+  concept: square, block; stairs
+  glosses: [square, block, cube, brick, stairs, steps]
+
+# ── places ──────────────────────────────────────────────────────────────────
+- id: tomo
+  tier: pu
+  roles: [content]
+  themes: [places]
+  concept: indoor space — house, room, building
+  glosses: [house, home, room, building, indoor space, shelter]
+  notes: '"tomo telo" = bathroom, "tomo tawa" = car.'
+
+- id: esun
+  tier: pu
+  roles: [content]
+  themes: [places, actions]
+  concept: market, shop; trade
+  glosses: [market, shop, store, trade, business, buy, sell]
+
+- id: nasin
+  tier: pu
+  roles: [content]
+  themes: [places, mind]
+  concept: way, path, road; method, custom
+  glosses: [way, path, road, street, method, manner, custom, doctrine, system]
+
+# ── colours ─────────────────────────────────────────────────────────────────
+- id: kule
+  tier: pu
+  roles: [content]
+  themes: [colours]
+  concept: colour; colourful
+  glosses: [colour, color, colourful, colorful, paint, pigment]
+
+- id: loje
+  tier: pu
+  roles: [content]
+  themes: [colours]
+  concept: red
+  glosses: [red, reddish]
+
+- id: jelo
+  tier: pu
+  roles: [content]
+  themes: [colours]
+  concept: yellow
+  glosses: [yellow, yellowish, amber]
+
+- id: laso
+  tier: pu
+  roles: [content]
+  themes: [colours]
+  concept: blue, green
+  glosses: [blue, green, cyan, turquoise]
+  notes: One word for blue and green — "laso kasi" (plant-laso) is green, "laso sewi" (sky-laso) is blue.
+
+- id: walo
+  tier: pu
+  roles: [content]
+  themes: [colours]
+  concept: white, pale
+  glosses: [white, pale, whitish]
+
+- id: pimeja
+  tier: pu
+  roles: [content]
+  themes: [colours]
+  concept: black, dark; shadow
+  glosses: [black, dark, shadow, darkness]
+
+# ── qualities ───────────────────────────────────────────────────────────────
+- id: pona
+  tier: pu
+  roles: [content]
+  themes: [qualities]
+  concept: good, simple, positive; to fix; thanks
+  glosses: [good, nice, simple, positive, fine, correct, fix, repair, thanks, well]
+
+- id: ike
+  tier: pu
+  roles: [content]
+  themes: [qualities]
+  concept: bad, negative; needlessly complex
+  glosses: [bad, evil, wrong, negative, harmful, unpleasant, complicated]
+
+- id: suli
+  tier: pu
+  roles: [content]
+  themes: [qualities]
+  concept: big, tall, long; important; adult
+  glosses: [big, large, great, tall, long, important, adult, huge]
+
+- id: lili
+  tier: pu
+  roles: [content]
+  themes: [qualities]
+  concept: small, little, young; a bit
+  glosses: [small, little, tiny, young, few, short, slightly, a bit]
+
+- id: wawa
+  tier: pu
+  roles: [content]
+  themes: [qualities]
+  concept: strong, powerful, energetic
+  glosses: [strong, powerful, energetic, intense, confident, power, force]
+
+- id: lete
+  tier: pu
+  roles: [content]
+  themes: [qualities]
+  concept: cold, cool; raw
+  glosses: [cold, cool, chilly, raw, uncooked, freeze]
+
+- id: jaki
+  tier: pu
+  roles: [content]
+  themes: [qualities]
+  concept: dirty, gross, toxic
+  glosses: [dirty, gross, disgusting, unclean, toxic, filth, garbage, trash]
+
+- id: nasa
+  tier: pu
+  roles: [content]
+  themes: [qualities]
+  concept: strange, unusual, silly; drunk
+  glosses: [strange, weird, unusual, odd, silly, crazy, foolish, drunk]
+  notes: '"telo nasa" (strange water) = alcohol.'
+
+- id: ante
+  tier: pu
+  roles: [content]
+  themes: [qualities]
+  concept: different, other; to change
+  glosses: [different, other, changed, change, alter, else]
+
+- id: sama
+  tier: pu
+  roles: [content, preposition]
+  themes: [qualities]
+  concept: same, similar; like, as; sibling
+  glosses: [same, similar, equal, alike, like, as, sibling, peer]
+
+- id: sin
+  tier: pu
+  roles: [content]
+  themes: [qualities, time]
+  concept: new, fresh; another, extra
+  glosses: [new, fresh, another, additional, extra, again]
+  synonyms: [namako]
+
+- id: musi
+  tier: pu
+  roles: [content]
+  themes: [qualities, actions]
+  concept: fun, play, game; art
+  glosses: [fun, play, game, art, entertainment, amusing, artistic]
+
+- id: moli
+  tier: pu
+  roles: [content]
+  themes: [qualities, actions]
+  concept: death; dead, dying; to kill
+  glosses: [death, dead, dying, die, kill]
+
+- id: epiku
+  tier: ku
+  roles: [content]
+  themes: [qualities]
+  concept: epic, cool, awesome
+  glosses: [epic, cool, awesome, amazing]
+
+- id: majuna
+  tier: ku
+  roles: [content]
+  themes: [qualities, time]
+  concept: old, aged, ancient
+  glosses: [old, aged, ancient, elderly]
+
+- id: meso
+  tier: ku
+  roles: [content]
+  themes: [qualities]
+  concept: middle, average, so-so
+  glosses: [middle, average, medium, mediocre, so-so, midpoint]
+
+- id: jasima
+  tier: ku
+  roles: [content]
+  themes: [qualities, position]
+  concept: reflect, mirror, echo; opposite
+  glosses: [reflect, reflection, mirror, echo, opposite]
+
+# ── actions ─────────────────────────────────────────────────────────────────
+- id: pali
+  tier: pu
+  roles: [content]
+  themes: [actions]
+  concept: do, make, work, build
+  glosses: [do, make, work, build, create, act, prepare, job]
+
+- id: pana
+  tier: pu
+  roles: [content]
+  themes: [actions]
+  concept: give, send, emit, release
+  glosses: [give, send, emit, provide, release, share]
+
+- id: jo
+  tier: pu
+  roles: [content]
+  themes: [actions]
+  concept: have, carry, contain, hold
+  glosses: [have, own, carry, contain, hold, possess]
+
+- id: kama
+  tier: pu
+  roles: [content, preverb]
+  themes: [actions, time]
+  concept: come, arrive, happen; become; future
+  glosses: [come, arrive, approach, happen, become, future, coming]
+  notes: 'As a preverb it means "become / start to" — "mi kama sona" = I learn.'
+
+- id: tawa
+  tier: pu
+  roles: [content, preposition]
+  themes: [actions, position]
+  concept: go, move; to, toward, for
+  glosses: [go, move, walk, travel, to, toward, towards, for, motion]
+  notes: '"X li pona tawa mi" = X is good to me — I like X.'
+
+- id: awen
+  tier: pu
+  roles: [content, preverb]
+  themes: [actions]
+  concept: stay, wait, keep; continue
+  glosses: [stay, remain, wait, keep, protect, continue, still]
+
+- id: alasa
+  tier: pu
+  roles: [content, preverb]
+  themes: [actions]
+  concept: hunt, forage, gather; try to
+  glosses: [hunt, forage, gather, search, try]
+  notes: The preverb use "try to" is common in the community but not in pu.
+
+- id: lape
+  tier: pu
+  roles: [content]
+  themes: [actions]
+  concept: sleep, rest
+  glosses: [sleep, rest, nap, asleep]
+
+- id: pakala
+  tier: pu
+  roles: [content, interjection]
+  themes: [actions]
+  concept: break, damage, mess up; mistake
+  glosses: [break, broken, damage, ruin, destroy, mistake, error, accident, oops]
+  notes: Also an exclamation of frustration — "pakala!"
+
+- id: utala
+  tier: pu
+  roles: [content]
+  themes: [actions]
+  concept: fight, battle, compete; challenge
+  glosses: [fight, battle, conflict, war, compete, struggle, challenge, attack]
+
+- id: weka
+  tier: pu
+  roles: [content]
+  themes: [actions, position]
+  concept: away, absent; to remove
+  glosses: [away, absent, gone, missing, remove, eliminate, distant]
+
+- id: open
+  tier: pu
+  roles: [content, preverb]
+  themes: [actions, time]
+  concept: open, begin, start; turn on
+  glosses: [open, begin, start, turn on, beginning]
+
+- id: pini
+  tier: pu
+  roles: [content, preverb]
+  themes: [actions, time]
+  concept: finish, end, stop; past
+  glosses: [finish, end, stop, complete, done, past, ago, close, turn off]
+  notes: '"tenpo pini" = the past.'
+
+- id: kepeken
+  tier: pu
+  roles: [preposition, content]
+  themes: [actions]
+  concept: using, with (a tool), by means of
+  glosses: [use, using, with, by means of]
+
+- id: unpa
+  tier: pu
+  roles: [content]
+  themes: [actions]
+  concept: sex; to have sex with
+  glosses: [sex, sexual, have sex with]
+  sensitive: true
+
+- id: kipisi
+  tier: ku
+  roles: [content]
+  themes: [actions]
+  concept: cut, slice, divide
+  glosses: [cut, slice, divide, split, piece]
+
+- id: lanpan
+  tier: ku
+  roles: [content]
+  themes: [actions]
+  concept: take, seize, receive
+  glosses: [take, seize, grab, catch, receive, steal, get]
+
+# ── mind & feelings ─────────────────────────────────────────────────────────
+- id: pilin
+  tier: pu
+  roles: [content]
+  themes: [mind, body]
+  concept: heart, feeling; to feel, think
+  glosses: [feel, feeling, emotion, heart, sense, touch, think]
+  notes: '"pilin mi la …" = I think that …'
+
+- id: olin
+  tier: pu
+  roles: [content]
+  themes: [mind]
+  concept: love, compassion, affection
+  glosses: [love, compassion, affection, respect, adore]
+
+- id: sona
+  tier: pu
+  roles: [content, preverb]
+  themes: [mind]
+  concept: know, understand; knowledge
+  glosses: [know, knowledge, understand, wisdom, information, know how to]
+  notes: '"kama sona" (come to know) = learn.'
+
+- id: wile
+  tier: pu
+  roles: [content, preverb]
+  themes: [mind]
+  concept: want, need, wish; must
+  glosses: [want, need, wish, desire, must, have to, should]
+
+- id: ken
+  tier: pu
+  roles: [content, preverb]
+  themes: [mind]
+  concept: can, able to; possible
+  glosses: [can, able, may, possible, possibility, permission]
+  notes: '"ken la" = maybe.'
+
+- id: monsuta
+  tier: ku
+  roles: [content]
+  themes: [mind]
+  concept: fear, dread; monster
+  glosses: [fear, monster, scary, dread, threat, afraid]
+
+# ── senses & communication ──────────────────────────────────────────────────
+- id: lukin
+  tier: pu
+  roles: [content, preverb]
+  themes: [senses, body]
+  concept: see, look, watch, read; eye; try to
+  glosses: [see, look, watch, read, eye, visual, seek, try]
+  synonyms: [oko]
+  notes: 'As a preverb: "try to" — "mi lukin sona" = I try to understand.'
+
+- id: kute
+  tier: pu
+  roles: [content]
+  themes: [senses, body]
+  concept: hear, listen; ear; obey
+  glosses: [hear, listen, ear, obey, pay attention]
+
+- id: kalama
+  tier: pu
+  roles: [content]
+  themes: [senses, communication]
+  concept: sound, noise; to make a sound
+  glosses: [sound, noise, voice, ring, make noise, play music]
+  notes: '"kalama musi" (fun sound) = music.'
+
+- id: toki
+  tier: pu
+  roles: [content, interjection]
+  themes: [communication]
+  concept: speak, talk; language; hello!
+  glosses: [speak, talk, say, language, speech, conversation, communicate, hello, hi]
+
+- id: nimi
+  tier: pu
+  roles: [content]
+  themes: [communication]
+  concept: name, word
+  glosses: [name, word, term]
+
+- id: sitelen
+  tier: pu
+  roles: [content]
+  themes: [communication]
+  concept: picture, writing, symbol; to draw, write
+  glosses: [picture, image, writing, drawing, symbol, sign, draw, write, mark]
+  notes: '"sitelen pona" is Toki Pona''s own logographic script.'
+
+- id: pu
+  tier: pu
+  roles: [content]
+  themes: [communication]
+  concept: interacting with the official Toki Pona book (pu)
+  glosses: [the official toki pona book, the book pu]
+
+- id: ku
+  tier: ku
+  roles: [content]
+  themes: [communication]
+  concept: interacting with the Toki Pona Dictionary (ku)
+  glosses: [the toki pona dictionary, the book ku]
+
+- id: linluwi
+  tier: ku
+  roles: [content]
+  themes: [communication]
+  concept: network, internet, web
+  glosses: [network, internet, web, connection]
+
+# ── position & direction ────────────────────────────────────────────────────
+- id: lon
+  tier: pu
+  roles: [preposition, content]
+  themes: [position]
+  concept: at, in, on; to exist, be present; true
+  glosses: [at, in, on, located, exist, present, real, "true"]
+
+- id: tan
+  tier: pu
+  roles: [preposition, content]
+  themes: [position]
+  concept: from; because of; cause, origin
+  glosses: [from, because, because of, origin, cause, reason, since]
+  notes: '"tan ni: …" = because …'
+
+- id: poka
+  tier: pu
+  roles: [content, preposition]
+  themes: [position, people]
+  concept: side, hip; next to, with
+  glosses: [side, hip, next to, beside, near, nearby, with, companion]
+
+- id: anpa
+  tier: pu
+  roles: [content]
+  themes: [position]
+  concept: below, down, bottom; humble; to bow
+  glosses: [below, down, under, bottom, floor, humble, low, bow]
+
+- id: sewi
+  tier: pu
+  roles: [content]
+  themes: [position, mind]
+  concept: above, top, sky; divine, sacred
+  glosses: [up, above, top, high, sky, divine, sacred, god]
+
+# ── time ────────────────────────────────────────────────────────────────────
+- id: tenpo
+  tier: pu
+  roles: [content]
+  themes: [time]
+  concept: time, moment, period
+  glosses: [time, moment, period, duration, occasion, situation]
+  notes: '"tenpo ni" = now, "tenpo suno" = day, "tenpo pimeja" = night.'
+
+# ── numbers ─────────────────────────────────────────────────────────────────
+- id: wan
+  tier: pu
+  roles: [number, content]
+  themes: [numbers]
+  concept: one; unique; united
+  glosses: [one, single, unique, united, part, element]
+
+- id: tu
+  tier: pu
+  roles: [number, content]
+  themes: [numbers]
+  concept: two; to divide
+  glosses: [two, pair, divide, split, separate]
+  notes: '"tu wan" = three.'
+
+- id: mute
+  tier: pu
+  roles: [number, content]
+  themes: [numbers, qualities]
+  concept: many, a lot, very; twenty
+  glosses: [many, much, lots, very, more, several, quantity, twenty]
+  notes: Twenty in pu-style numbers — "mute luka tu wan" = 28.
+
+- id: ale
+  tier: pu
+  roles: [number, content]
+  themes: [numbers, qualities]
+  concept: all, every, everything; life; a hundred
+  glosses: [all, every, everything, universe, life, abundance, hundred]
+  variants: [ali]
+  notes: Also spelled "ali". A hundred in pu-style numbers.
+
+- id: ala
+  tier: pu
+  roles: [content, number]
+  themes: [grammar, numbers]
+  concept: no, not, zero, nothing
+  glosses: [no, not, none, zero, nothing]
+  notes: 'Comes after the word it negates — "mi sona ala". "X ala X?" asks a yes/no question.'
+
+- id: nanpa
+  tier: pu
+  roles: [particle, content]
+  themes: [numbers]
+  concept: number; ordinal marker (-th)
+  glosses: [number, numeral, digit, ordinal]
+  notes: '"nanpa wan" = first, "nanpa tu" = second.'
+
+- id: ni
+  tier: pu
+  roles: [content]
+  themes: [grammar]
+  concept: this, that
+  glosses: [this, that, these, those]
